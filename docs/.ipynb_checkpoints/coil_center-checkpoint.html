@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMC Group: SMC Phu My Coil Center</title>
+    <style>
+        /* CSS chung cho tất cả các trang */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+         .header-image {
+            width: 100%;
+            height: 250px; /* Fixed height for consistency */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            display: block;
+            margin-bottom: 15px;
+        }
+        .lang-selector {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            display: flex;
+            gap: 5px;
+        }
+        .lang-selector button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .lang-selector button:hover {
+            background-color: #004085;
+        }
+        .lang-selector button.active {
+            background-color: #004085;
+            border: 1px solid #ffffff;
+        }
+        nav {
+            background-color: #0056b3;
+            padding: 0.75rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            display: inline-block;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #004085;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 30px 0;
+        }
+        section {
+            background-color: #ffffff;
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #007bff;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        h3 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        ul li::before {
+            content: '•';
+            color: #007bff;
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .section-image { /* New class for images within sections */
+            width: 100%;
+            height: 200px; /* Adjust height as needed */
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            background-color: #e2f0ff;
+            padding: 20px;
+            border-left: 6px solid #007bff;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .contact-info a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #004085;
+            color: #ffffff;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav a {
+                padding: 0.75rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            .container {
+                width: 95%;
+                padding: 15px 0;
+            }
+            section {
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 1.7rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .lang-selector {
+                top: 10px;
+                right: 10px;
+                gap: 3px;
+            }
+            .lang-selector button {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            .header-image, .section-image {
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                border-bottom: 1px solid #002c5f;
+            }
+            nav a:last-child {
+                border-bottom: none;
+            }
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+            section {
+                margin-bottom: 15px;
+                padding: 15px;
+                border-radius: 5px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.2rem;
+            }
+            .lang-selector {
+                position: static;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            .header-image, .section-image {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='NMP_0156.jpg'" alt="SMC Phu My Facility" class="header-image">
+        <h1>SMC Group</h1>
+        <p>Giải pháp Cơ khí Chính xác & Thép Chất lượng Cao</p>
+        <div class="lang-selector">
+            <button onclick="setLanguage('vi')" class="active">VI</button>
+            <button onclick="setLanguage('en')">EN</button>
+            <button onclick="setLanguage('zh')">ZH</button>
+            <button onclick="setLanguage('ko')">KO</button>
+            <button onclick="setLanguage('ja')">JA</button>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Trang Chủ</a>
+        <a href="about.html">Về Chúng Tôi</a>
+        <a href="precision.html">SMC Phu My Precision</a>
+        <a href="coil_center.html">SMC Phu My Coil Center</a>
+        <!-- Removed link to applications.html -->
+        <a href="contact.html">Liên Hệ</a>
+    </nav>
+
+    <div class="container">
+        <section id="coilcenter">
+            <!-- Image for Coil Center -->
+            <img src="img/1O0A6779.JPG" onerror="this.onerror=null;this.src='1O0A6779.JPG'" alt="SMC Phu My Coil Center Facility" class="header-image">
+
+            <!-- Vietnamese Content -->
+            <div class="lang-content" data-lang="vi">
+                <h2>SMC Phu My Coil Center: Thép Cuộn & Thép Tấm</h2>
+                <p>SMC Phu My Coil Center là nhà cung cấp hàng đầu các sản phẩm thép chất lượng cao, đa dạng về chủng loại và quy cách.</p>
+
+                <h3>Sản Phẩm Đa Dạng</h3>
+                <p>Chúng tôi cung cấp các loại thép sau:</p>
+                <ul>
+                    <li>Thép cán nóng (Hot rolled steel)</li>
+                    <li>Thép cán nóng đã tẩy gỉ và bôi dầu (Hot Rolled Pickled and Oiled Steel)</li>
+                    <li>Thép cán nguội (Cold Rolled Steel)</li>
+                    <li>Thép mạ kẽm nhúng nóng (Hot-Dip Zinc-Coated Steel)</li>
+                    <li>Thép mạ kẽm điện phân (Electro Galvanized Steel)</li>
+                    <li>Thép phủ màu (OPPGI-PPGL - PCM Steel)</li>
+                    <li>Thép không gỉ (Stainless Steel)</li>
+                    <li>Thép điện (Electrical Steel)</li>
+                </ul>
+
+                <h3>Năng Lực Gia Công</h3>
+                <p>Chúng tôi có khả năng gia công thép cuộn thành tấm và dải theo yêu cầu:</p>
+                <ul>
+                    <li><strong>Máy xẻ băng (Slitting Machine):</strong>
+                        <img src="img/1O0A6824.JPG" onerror="this.onerror=null;this.src='1O0A6824.JPG'" alt="Máy xẻ băng" class="section-image">
+                        <ul>
+                            <li>Vật liệu: PO, CR, GI, GL, PP, EGI, ES.</li>
+                            <li>Độ dày: 0.25&divide;3.2 mm.</li>
+                            <li>Chiều rộng: 24&divide;1350 mm.</li>
+                            <li>Dung sai chiều rộng: +/-0.2 mm.</li>
+                            <li>Trọng lượng cuộn tối đa: 20 tấn.</li>
+                            <li>Đường kính trong: 508, 610 mm.</li>
+                            <li>Đường kính ngoài: Tối đa 1800 mm.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Máy cắt tấm (Shearing Machine):</strong>
+                        <img src="img/NMP_0439.jpg" onerror="this.onerror=null;this.src='NMP_0439.jpg'" alt="Máy cắt tấm" class="section-image">
+                        <ul>
+                            <li>Vật liệu: PO, CR, GI, GL, PP, EGI.</li>
+                            <li>Độ dày: 0.3&divide;6.0 mm.</li>
+                            <li>Chiều rộng: 150&divide;1400 mm.</li>
+                            <li>Chiều dài tấm: Tối đa 6000 mm.</li>
+                            <li>Dung sai chiều dài: +/-0.5 mm.</li>
+                            <li>Trọng lượng cuộn tối đa: 15 tấn.</li>
+                            <li>Đường kính trong: 508, 610 mm.</li>
+                            <li>Đường kính ngoài: Tối đa 1800 mm.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Kiểm Soát Chất Lượng</h3>
+                <img src="img/NMP_0354.jpg" onerror="this.onerror=null;this.src='NMP_0354.jpg'" alt="Kiểm soát chất lượng" class="section-image">
+                <p>Chất lượng được kiểm soát chặt chẽ ở mọi giai đoạn để đảm bảo sản phẩm đến tay khách hàng đạt tiêu chuẩn cao nhất và độ chính xác cao.</p>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content" data-lang="en" style="display:none;">
+                <h2>SMC Phu My Coil Center: Steel Coils & Sheets</h2>
+                <p>SMC Phu My Coil Center is a leading supplier of high-quality steel products, diverse in types and specifications.</p>
+
+                <h3>Diverse Products</h3>
+                <p>We supply the following types of steel:</p>
+                <ul>
+                    <li>Hot rolled steel</li>
+                    <li>Hot Rolled Pickled and Oiled Steel</li>
+                    <li>Cold Rolled Steel</li>
+                    <li>Hot-Dip Zinc-Coated Steel</li>
+                    <li>Electro Galvanized Steel</li>
+                    <li>Pre-painted Steel (OPPGI-PPGL - PCM Steel)</li>
+                    <li>Stainless Steel</li>
+                    <li>Electrical Steel</li>
+                </ul>
+
+                <h3>Processing Capacity</h3>
+                <p>We are capable of processing steel coils into sheets and strips as required:</p>
+                <ul>
+                    <li><strong>Slitting Machine:</strong>
+                        <img src="img/1O0A6824.JPG" onerror="this.onerror=null;this.src='1O0A6824.JPG'" alt="Slitting Machine" class="section-image">
+                        <ul>
+                            <li>Material: PO, CR, GI, GL, PP, EGI, ES.</li>
+                            <li>Thickness: 0.25&divide;3.2 mm.</li>
+                            <li>Width: 24&divide;1350 mm.</li>
+                            <li>Width tolerance: +/-0.2 mm.</li>
+                            <li>Max coil weight: 20 tons.</li>
+                            <li>Inner Diameter: 508, 610 mm.</li>
+                            <li>Outer Diameter: Max 1800 mm.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Shearing Machine:</strong>
+                        <img src="img/NMP_0439.jpg" onerror="this.onerror=null;this.src='NMP_0439.jpg'" alt="Shearing Machine" class="section-image">
+                        <ul>
+                            <li>Material: PO, CR, GI, GL, PP, EGI.</li>
+                            <li>Thickness: 0.3&divide;6.0 mm.</li>
+                            <li>Width: 150&divide;1400 mm.</li>
+                            <li>Sheet Length: Max 6000 mm.</li>
+                            <li>Length tolerance: +/-0.5 mm.</li>
+                            <li>Max coil weight: 15 tons.</li>
+                            <li>Inner Diameter: 508, 610 mm.</li>
+                            <li>Outer Diameter: Max 1800 mm.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Quality Control</h3>
+                <img src="img/NMP_0354.jpg" onerror="this.onerror=null;this.src='NMP_0354.jpg'" alt="Quality Control" class="section-image">
+                <p>Quality is strictly controlled at every stage to ensure products delivered to customers meet the highest standards and high precision.</p>
+            </div>
+
+            <!-- Chinese Content -->
+            <div class="lang-content" data-lang="zh" style="display:none;">
+                <h2>SMC富美钢卷中心：钢卷与钢板</h2>
+                <p>SMC富美钢卷中心是高质量钢材产品的领先供应商，种类和规格多样。</p>
+
+                <h3>产品多样性</h3>
+                <p>我们提供以下类型的钢材：</p>
+                <ul>
+                    <li>热轧钢 (Hot rolled steel)</li>
+                    <li>热轧酸洗涂油钢 (Hot Rolled Pickled and Oiled Steel)</li>
+                    <li>冷轧钢 (Cold Rolled Steel)</li>
+                    <li>热镀锌钢 (Hot-Dip Zinc-Coated Steel)</li>
+                    <li>电镀锌钢 (Electro Galvanized Steel)</li>
+                    <li>彩涂钢 (OPPGI-PPGL - PCM Steel)</li>
+                    <li>不锈钢 (Stainless Steel)</li>
+                    <li>电工钢 (Electrical Steel)</li>
+                </ul>
+
+                <h3>加工能力</h3>
+                <p>我们能够根据要求将钢卷加工成钢板和钢带：</p>
+                <ul>
+                    <li><strong>分条机 (Slitting Machine)：</strong>
+                        <img src="img/1O0A6824.JPG" onerror="this.onerror=null;this.src='1O0A6824.JPG'" alt="分条机" class="section-image">
+                        <ul>
+                            <li>材料：PO, CR, GI, GL, PP, EGI, ES。</li>
+                            <li>厚度：0.25&divide;3.2 毫米。</li>
+                            <li>宽度：24&divide;1350 毫米。</li>
+                            <li>宽度公差：+/-0.2 毫米。</li>
+                            <li>最大卷重：20 吨。</li>
+                            <li>内径：508, 610 毫米。</li>
+                            <li>外径：最大 1800 毫米。</li>
+                        </ul>
+                    </li>
+                    <li><strong>剪板机 (Shearing Machine)：</strong>
+                        <img src="img/NMP_0439.jpg" onerror="this.onerror=null;this.src='NMP_0439.jpg'" alt="剪板机" class="section-image">
+                        <ul>
+                            <li>材料：PO, CR, GI, GL, PP, EGI。</li>
+                            <li>厚度：0.3&divide;6.0 毫米。</li>
+                            <li>宽度：150&divide;1400 毫米。</li>
+                            <li>板材长度：最大 6000 毫米。</li>
+                            <li>长度公差：+/-0.5 毫米。</li>
+                            <li>最大卷重：15 吨。</li>
+                            <li>内径：508, 610 毫米。</li>
+                            <li>外径：最大 1800 毫米。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>质量控制</h3>
+                <img src="img/NMP_0354.jpg" onerror="this.onerror=null;this.src='NMP_0354.jpg'" alt="质量控制" class="section-image">
+                <p>在每个阶段都严格控制质量，以确保交付给客户的产品达到最高标准和高精度。</p>
+            </div>
+
+            <!-- Korean Content -->
+            <div class="lang-content" data-lang="ko" style="display:none;">
+                <h2>SMC 푸미 코일 센터: 강철 코일 및 시트</h2>
+                <p>SMC 푸미 코일 센터는 다양한 종류와 사양의 고품질 강철 제품을 공급하는 선두 기업입니다.</p>
+
+                <h3>다양한 제품</h3>
+                <p>우리는 다음 유형의 강철을 공급합니다:</p>
+                <ul>
+                    <li>열연강 (Hot rolled steel)</li>
+                    <li>산세 및 유처리 열연강 (Hot Rolled Pickled and Oiled Steel)</li>
+                    <li>냉연강 (Cold Rolled Steel)</li>
+                    <li>용융 아연 도금 강 (Hot-Dip Zinc-Coated Steel)</li>
+                    <li>전기 아연 도금 강 (Electro Galvanized Steel)</li>
+                    <li>컬러 코팅 강 (OPPGI-PPGL - PCM Steel)</li>
+                    <li>스테인리스 강 (Stainless Steel)</li>
+                    <li>전기 강 (Electrical Steel)</li>
+                </ul>
+
+                <h3>가공 능력</h3>
+                <p>우리는 요구 사항에 따라 강철 코일을 시트 및 스트립으로 가공할 수 있습니다:</p>
+                <ul>
+                    <li><strong>슬리팅 머신 (Slitting Machine):</strong>
+                        <img src="img/1O0A6824.JPG" onerror="this.onerror=null;this.src='1O0A6824.JPG'" alt="슬리팅 머신" class="section-image">
+                        <ul>
+                            <li>재료: PO, CR, GI, GL, PP, EGI, ES.</li>
+                            <li>두께: 0.25&divide;3.2 mm.</li>
+                            <li>폭: 24&divide;1350 mm.</li>
+                            <li>폭 공차: +/-0.2 mm.</li>
+                            <li>최대 코일 중량: 20 톤.</li>
+                            <li>내경: 508, 610 mm.</li>
+                            <li>외경: 최대 1800 mm.</li>
+                        </ul>
+                    </li>
+                    <li><strong>전단기 (Shearing Machine):</strong>
+                        <img src="img/NMP_0439.jpg" onerror="this.onerror=null;this.src='NMP_0439.jpg'" alt="전단기" class="section-image">
+                        <ul>
+                            <li>재료: PO, CR, GI, GL, PP, EGI.</li>
+                            <li>두께: 0.3&divide;6.0 mm.</li>
+                            <li>폭: 150&divide;1400 mm.</li>
+                            <li>시트 길이: 최대 6000 mm.</li>
+                            <li>길이 공차: +/-0.5 mm.</li>
+                            <li>최대 코일 중량: 15 톤.</li>
+                            <li>내경: 508, 610 mm.</li>
+                            <li>外径: 最大 1800 mm.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>품질 관리</h3>
+                <img src="img/NMP_0354.jpg"  onerror="this.onerror=null;this.src='NMP_0354.jpg'" alt="품질 관리" class="section-image">
+                <p>고객에게 전달되는 제품이 최고 수준의 표준과 높은 정밀도를 충족하도록 모든 단계에서 품질을 엄격하게 관리합니다.</p>
+            </div>
+
+            <!-- Japanese Content -->
+            <div class="lang-content" data-lang="ja" style="display:none;">
+                <h2>SMCフーミーコイルセンター：鋼材コイルとシート</h2>
+                <p>SMCフーミーコイルセンターは、種類と仕様が多様な高品質鋼材製品の主要サプライヤーです。</p>
+
+                <h3>多様な製品</h3>
+                <p>以下の種類の鋼材を提供しています。</p>
+                <ul>
+                    <li>熱延鋼板 (Hot rolled steel)</li>
+                    <li>熱延酸洗油付け鋼板 (Hot Rolled Pickled and Oiled Steel)</li>
+                    <li>冷延鋼板 (Cold Rolled Steel)</li>
+                    <li>溶融亜鉛めっき鋼板 (Hot-Dip Zinc-Coated Steel)</li>
+                    <li>電気亜鉛めっき鋼板 (Electro Galvanized Steel)</li>
+                    <li>塗装鋼板 (OPPGI-PPGL - PCM Steel)</li>
+                    <li>ステンレス鋼 (Stainless Steel)</li>
+                    <li>電磁鋼板 (Electrical Steel)</li>
+                </ul>
+
+                <h3>加工能力</h3>
+                <p>私たちは、必要に応じて鋼材コイルをシートやストリップに加工することができます。</p>
+                <ul>
+                    <li><strong>スリッティングマシン (Slitting Machine):</strong>
+                        <img src="img/1O0A6824.JPG" onerror="this.onerror=null;this.src='1O0A6824.JPG'" alt="スリッティングマシン" class="section-image">
+                        <ul>
+                            <li>材料: PO, CR, GI, GL, PP, EGI, ES。</li>
+                            <li>厚さ: 0.25&divide;3.2 mm。</li>
+                            <li>幅: 24&divide;1350 mm。</li>
+                            <li>幅公差: +/-0.2 mm。</li>
+                            <li>最大コイル重量: 20トン。</li>
+                            <li>内径: 508, 610 mm。</li>
+                            <li>外径: 最大 1800 mm。</li>
+                        </ul>
+                    </li>
+                    <li><strong>シャーリングマシン (Shearing Machine):</strong>
+                        <img src="img/NMP_0439.jpg" onerror="this.onerror=null;this.src='NMP_0439.jpg'" alt="シャーリングマシン" class="section-image">
+                        <ul>
+                            <li>材料: PO, CR, GI, GL, PP, EGI。</li>
+                            <li>厚さ: 0.3&divide;6.0 mm。</li>
+                            <li>幅: 150&divide;1400 mm。</li>
+                            <li>シート長さ: 最大 6000 mm。</li>
+                            <li>長さ公差: +/-0.5 mm。</li>
+                            <li>最大コイル重量: 15トン。</li>
+                            <li>内径: 508, 610 mm。</li>
+                            <li>外径: 最大 1800 mm。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>品質管理</h3>
+                <img src="img/NMP_0354.jpg" onerror="this.onerror=null;this.src='NMP_0354.jpg'" alt="品質管理" class="section-image">
+                <p>お客様に届けられる製品が最高の基準と高精度を満たすよう、すべての段階で品質を厳格に管理しています。</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SMC Group. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for language switching
+        function setLanguage(lang) {
+            localStorage.setItem('preferredLang', lang); // Save preferred language
+            document.querySelectorAll('.lang-content').forEach(content => {
+                if (content.getAttribute('data-lang') === lang) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+            // Update active button state
+            document.querySelectorAll('.lang-selector button').forEach(button => {
+                if (button.onclick.toString().includes(`setLanguage('${lang}')`)) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        // On page load, set language from localStorage or default to Vietnamese
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'vi';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

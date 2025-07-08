@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMC Group: SMC Phu My Precision</title>
+    <style>
+        /* CSS chung cho tất cả các trang */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative; /* Added for language selector positioning */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+        .header-image {
+            width: 100%;
+            height: 250px; /* Fixed height for consistency */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            display: block;
+            margin-bottom: 15px;
+        }
+        .lang-selector {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            display: flex;
+            gap: 5px;
+        }
+        .lang-selector button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .lang-selector button:hover {
+            background-color: #004085;
+        }
+        .lang-selector button.active {
+            background-color: #004085;
+            border: 1px solid #ffffff;
+        }
+        nav {
+            background-color: #0056b3;
+            padding: 0.75rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            display: inline-block;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #004085;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 30px 0;
+        }
+        section {
+            background-color: #ffffff;
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #007bff;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        h3 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        ul li::before {
+            content: '•';
+            color: #007bff;
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .section-image { /* New class for images within sections */
+            width: 100%;
+            height: 200px; /* Adjust height as needed */
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .product-image { /* New class for product images */
+            width: 80%; /* Smaller width for product images */
+            max-width: 400px; /* Max width for product images */
+            height: 150px; /* Fixed height for product images */
+            object-fit: contain; /* Contain the image within the element */
+            display: block;
+            margin: 10px auto 20px auto; /* Center the image */
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+        }
+        .contact-info {
+            background-color: #e2f0ff;
+            padding: 20px;
+            border-left: 6px solid #007bff;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .contact-info a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #004085;
+            color: #ffffff;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav a {
+                padding: 0.75rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            .container {
+                width: 95%;
+                padding: 15px 0;
+            }
+            section {
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 1.7rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .lang-selector {
+                top: 10px;
+                right: 10px;
+                gap: 3px;
+            }
+            .lang-selector button {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            .header-image, .section-image {
+                height: 150px;
+            }
+            .product-image {
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                border-bottom: 1px solid #002c5f;
+            }
+            nav a:last-child {
+                border-bottom: none;
+            }
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+            section {
+                margin-bottom: 15px;
+                padding: 15px;
+                border-radius: 5px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.2rem;
+            }
+            .lang-selector {
+                position: static;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            .header-image, .section-image {
+                height: 100px;
+            }
+            .product-image {
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='NMP_0156.jpg'" alt="SMC Phu My Facility" class="header-image">
+        <h1>SMC Group</h1>
+        <p>Giải pháp Cơ khí Chính xác & Thép Chất lượng Cao</p>
+        <div class="lang-selector">
+            <button onclick="setLanguage('vi')" class="active">VI</button>
+            <button onclick="setLanguage('en')">EN</button>
+            <button onclick="setLanguage('zh')">ZH</button>
+            <button onclick="setLanguage('ko')">KO</button>
+            <button onclick="setLanguage('ja')">JA</button>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Trang Chủ</a>
+        <a href="about.html">Về Chúng Tôi</a>
+        <a href="precision.html">SMC Phu My Precision</a>
+        <a href="coil_center.html">SMC Phu My Coil Center</a>
+        <!-- Removed link to applications.html -->
+        <a href="contact.html">Liên Hệ</a>
+    </nav>
+
+    <div class="container">
+        <section id="precision">
+            <!-- Image for Precision -->
+            <img src="img/DJI_0891.jpg" onerror="this.onerror=null;this.src='DJI_0891.jpg'" alt="SMC Phu My Precision Facility" class="header-image">
+
+            <!-- Vietnamese Content -->
+            <div class="lang-content" data-lang="vi">
+                <h2>SMC Phu My Precision: Chấn Dập & Gia Công Chính Xác</h2>
+                <p>Chúng tôi cung cấp các giải pháp chấn dập và gia công kim loại tấm hàng đầu với năng lực sản xuất vượt trội, đáp ứng mọi yêu cầu khắt khe nhất của khách hàng.</p>
+
+                <h3>Năng Lực Sản Xuất</h3>
+                <p>SMC Phu My Precision được trang bị các dây chuyền dập hiện đại, đảm bảo hiệu suất và độ chính xác cao:</p>
+                <ul>
+                    <li><strong>Dây chuyền 1 & 2:</strong> Máy dập 800T với 6 bước dập, sử dụng hệ thống truyền tự động (Auto Transfer M/C) và có khả năng dập liên hoàn (800t-600t-400t, 400t-400t-400t). Dây chuyền hiện đại từ nhà cung ứng Hàn Quốc SIMPAC.</li>
+                    <li><strong>Dây chuyền 3:</strong> Máy dập đơn 600T.</li>
+                </ul>
+
+                <h3>Năng Lực Sản Xuất</h3>
+                <p>Chúng tôi có khả năng sản xuất hàng triệu sản phẩm dập mỗi tháng bao gồm các linh kiện như:</p>
+                <ul>
+                    <li>
+                        Khung trước máy giặt (Washing machine Frame Front)
+                        <img src="img/FrameFront.png" alt="Khung trước máy giặt" class="product-image">
+                    </li>
+                    <li>
+                        Nắp trên máy giặt (Washing machine Cover Top)
+                        <img src="img/CoverTop.png" alt="Nắp trên máy giặt" class="product-image">
+                    </li>
+                    <li>
+                        Cửa tấm tủ lạnh (Fridge Plate Door)
+                        <img src="img/PlateDoor.png" alt="Cửa tấm tủ lạnh" class="product-image">
+                    </li>
+                    <li>
+                        Khung Tivi (TV Chassis Rear)
+                        <img src="img/ChassisRear.png" alt="Khung Tivi" class="product-image">
+                    </li>
+                    <li>
+                        Bản lề khung (Bracket Hinge)
+                        <img src="img/BracketHinge.png" alt="Bản lề khung" class="product-image">
+                    </li>
+                    <li>
+                        Nắp lưng (Cover Back)
+                        <img src="img/Coverback.png" alt="Nắp lưng" class="product-image">
+                    </li>
+                </ul>
+                <p>Các sản phẩm hiện tại của chúng tôi bao gồm các bộ phận cho máy giặt, tủ lạnh, và các sản phẩm lắp ráp khác. Chúng tôi cũng sản xuất các sản phẩm cho ngành điện, điện lạnh, ô tô, v.v..</p>
+
+                <h3>Dịch Vụ OEM & ODM</h3>
+                <p>Với năng lực sản xuất hiện đại và đội ngũ chuyên gia giàu kinh nghiệm, SMC Phu My Precision tự tin cung cấp các dịch vụ OEM (sản xuất theo thiết kế của khách hàng) và ODM (thiết kế và sản xuất theo yêu cầu). Chúng tôi cam kết mang đến những sản phẩm chất lượng cao, đáp ứng đúng thông số kỹ thuật và thời gian giao hàng.</p>
+
+                <h3>Chủ Động Nguồn Cung Ứng Thép</h3>
+                <p>Là một phần của SMC Group, chúng tôi có lợi thế lớn trong việc tự chủ động tìm kiếm và cung ứng nguồn nguyên liệu thép chất lượng cao thông qua SMC Phu My Coil Center. Điều này giúp chúng tôi kiểm soát chặt chẽ chất lượng đầu vào, tối ưu hóa chi phí sản xuất và đảm bảo sự ổn định trong chuỗi cung ứng. Nguyên liệu thép được cung cấp từ các nhà máy thép hàng đầu như CSVC, POSCO, Nam Kim, Tôn Đông Á, Yiehphui, Nippon, JFE v.v.</p>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content" data-lang="en" style="display:none;">
+                <h2>SMC Phu My Precision: Stamping & Precision Machining</h2>
+                <p>We provide leading stamping and sheet metal processing solutions with outstanding production capacity, meeting all stringent customer requirements.</p>
+
+                <h3>Production Capacity</h3>
+                <p>SMC Phu My Precision is equipped with modern press lines, ensuring high efficiency and precision:</p>
+                <ul>
+                    <li><strong>Lines 1 & 2:</strong> 800T press machine with 6 steps, using Auto Transfer M/C, capable of continuous stamping (800t-600t-400t, 400t-400t-400t). Modern lines from Korean supplier SIMPAC.</li>
+                    <li><strong>Line 3:</strong> 600T single press machine.</li>
+                </ul>
+
+                <h3>Expected Monthly Production Capacity</h3>
+                <p>We are capable of producing millions of stamped products each month, including components such as:</p>
+                <ul>
+                    <li>
+                        Washing machine Frame Front
+                        <img src="img/FrameFront.png" alt="Washing Machine Frame Front" class="product-image">
+                    </li>
+                    <li>
+                        Washing machine Cover Top
+                        <img src="img/CoverTop.png" alt="Washing Machine Cover Top" class="product-image">
+                    </li>
+                    <li>
+                        Fridge Plate Door
+                        <img src="img/PlateDoor.png" alt="Fridge Plate Door" class="product-image">
+                    </li>
+                    <li>
+                        TV Chassis Rear
+                        <img src="img/ChassisRear.png" alt="TV Chassis Rear" class="product-image">
+                    </li>
+                    <li>
+                        Bracket Hinge
+                        <img src="img/BracketHinge.png" alt="Bracket Hinge" class="product-image">
+                    </li>
+                    <li>
+                        Cover Back
+                        <img src="img/Coverback.png" alt="Cover Back" class="product-image">
+                    </li>
+                </ul>
+                <p>Our current products include components for washing machines, refrigerators, and other assembled products. We also produce items for the electrical, refrigeration, automotive industries, etc.</p>
+
+                <h3>OEM & ODM Services</h3>
+                <p>With modern production capabilities and an experienced team of experts, SMC Phu My Precision confidently provides OEM (manufacturing according to customer designs) and ODM (design and manufacturing according to requirements) services. We are committed to delivering high-quality products that meet precise specifications and delivery times.</p>
+
+                <h3>Proactive Steel Supply</h3>
+                <p>As part of SMC Group, we have a significant advantage in proactively sourcing and supplying high-quality steel raw materials through SMC Phu My Coil Center. This allows us to strictly control input quality, optimize production costs, and ensure supply chain stability. Steel raw materials are supplied from leading steel mills such as CSVC, POSCO, Nam Kim, Ton Dong A, Yiehphui, Nippon, JFE, etc.</p>
+            </div>
+
+            <!-- Chinese Content -->
+            <div class="lang-content" data-lang="zh" style="display:none;">
+                <h2>SMC富美精密：冲压与精密加工</h2>
+                <p>我们提供领先的冲压和钣金加工解决方案，拥有卓越的生产能力，满足客户所有严格要求。</p>
+
+                <h3>生产能力</h3>
+                <p>SMC富美精密配备现代化冲压生产线，确保高效率和高精度：</p>
+                <ul>
+                    <li><strong>1号线和2号线：</strong> 800吨冲压机，6步冲压，采用自动传输机（Auto Transfer M/C），可连续冲压（800t-600t-400t, 400t-400t-400t）。来自韩国供应商SIMPAC的现代化生产线。</li>
+                    <li><strong>3号线：</strong> 600吨单冲压机。</li>
+                </ul>
+
+                <h3>每月预计生产能力</h3>
+                <p>我们每月能够生产数百万件冲压产品，包括以下组件：</p>
+                <ul>
+                    <li>
+                        洗衣机前框 (Washing machine Frame Front)
+                        <img src="img/FrameFront.png" alt="洗衣机前框" class="product-image">
+                    </li>
+                    <li>
+                        洗衣机顶盖 (Washing machine Cover Top)
+                        <img src="img/CoverTop.png" alt="洗衣机顶盖" class="product-image">
+                    </li>
+                    <li>
+                        冰箱门板 (Fridge Plate Door)
+                        <img src="img/PlateDoor.png" alt="冰箱门板" class="product-image">
+                    </li>
+                    <li>
+                        电视机底盘 (TV Chassis Rear)
+                        <img src="img/ChassisRear.png" alt="电视机底盘" class="product-image">
+                    </li>
+                    <li>
+                        铰链支架 (Bracket Hinge)
+                        <img src="img/BracketHinge.png" alt="铰链支架" class="product-image">
+                    </li>
+                    <li>
+                        后盖 (Cover Back)
+                        <img src="img/Coverback.png" alt="后盖" class="product-image">
+                    </li>
+                </ul>
+                <p>我们目前的产品包括洗衣机、冰箱和其他组装产品的部件。我们也为电气、制冷、汽车等行业生产产品。</p>
+
+                <h3>OEM & ODM 服务</h3>
+                <p>凭借现代化的生产能力和经验丰富的专家团队，SMC富美精密自信地提供OEM（根据客户设计制造）和ODM（根据要求设计和制造）服务。我们致力于提供高质量产品，满足精确的规格和交货时间。</p>
+
+                <h3>主动钢材供应</h3>
+                <p>作为SMC集团的一部分，我们通过SMC富美钢卷中心主动采购和供应高质量钢材原材料具有显著优势。这使我们能够严格控制投入质量，优化生产成本，并确保供应链的稳定性。钢材原材料由领先的钢厂供应，如CSVC、POSCO、Nam Kim、Ton Dong A、Yiehphui、Nippon、JFE等。</p>
+            </div>
+
+            <!-- Korean Content -->
+            <div class="lang-content" data-lang="ko" style="display:none;">
+                <h2>SMC 푸미 정밀: 스탬핑 및 정밀 가공</h2>
+                <p>우리는 뛰어난 생산 능력으로 최고의 스탬핑 및 판금 가공 솔루션을 제공하며, 고객의 모든 엄격한 요구 사항을 충족합니다.</p>
+
+                <h3>생산 능력</h3>
+                <p>SMC 푸미 정밀은 고효율 및 정밀도를 보장하는 현대적인 프레스 라인을 갖추고 있습니다:</p>
+                <ul>
+                    <li><strong>라인 1 & 2:</strong> 6단계 800T 프레스 기계, 자동 이송 장치(Auto Transfer M/C) 사용, 연속 스탬핑 가능 (800t-600t-400t, 400t-400t-400t). 한국 공급업체 SIMPAC의 현대적인 라인입니다.</li>
+                    <li><strong>라인 3:</strong> 600T 단일 프레스 기계.</li>
+                </ul>
+
+                <h3>월별 예상 생산 능력</h3>
+                <p>우리는 매월 수백만 개의 스탬핑 제품을 생산할 수 있으며, 다음 구성 요소를 포함합니다:</p>
+                <ul>
+                    <li>
+                        세탁기 전면 프레임 (Washing machine Frame Front)
+                        <img src="img/FrameFront.png" alt="세탁기 전면 프레임" class="product-image">
+                    </li>
+                    <li>
+                        세탁기 상단 커버 (Washing machine Cover Top)
+                        <img src="img/CoverTop.png" alt="세탁기 상단 커버" class="product-image">
+                    </li>
+                    <li>
+                        냉장고 문판 (Fridge Plate Door)
+                        <img src="img/PlateDoor.png" alt="냉장고 문판" class="product-image">
+                    </li>
+                    <li>
+                        TV 섀시 후면 (TV Chassis Rear)
+                        <img src="img/ChassisRear.png" alt="TV 섀시 후면" class="product-image">
+                    </li>
+                    <li>
+                        브래킷 힌지 (Bracket Hinge)
+                        <img src="img/BracketHinge.png" alt="브래킷 힌지" class="product-image">
+                    </li>
+                    <li>
+                        후면 커버 (Cover Back)
+                        <img src="img/Coverback.png" class="product-image">
+                    </li>
+                </ul>
+                <p>현재 제품에는 세탁기, 냉장고 및 기타 조립 제품용 부품이 포함됩니다. 또한 전기, 냉동, 자동차 산업 등을 위한 품목도 생산합니다.</p>
+
+                <h3>OEM & ODM 서비스</h3>
+                <p>현대적인 생산 능력과 경험이 풍부한 전문가 팀을 통해 SMC 푸미 정밀은 OEM(고객 설계에 따른 제조) 및 ODM(요구 사항에 따른 설계 및 제조) 서비스를 자신 있게 제공합니다。 우리는 정확한 사양과 납기일을 충족하는 고품질 제품을 제공하기 위해 최선을 다합니다。</p>
+
+                <h3>선제적 철강 공급</h3>
+                <p>SMC 그룹의 일원으로서, 우리는 SMC 푸미 코일 센터를 통해 고품질 철강 원자재를 선제적으로 조달하고 공급하는 데 큰 이점을 가지고 있습니다. 이를 통해 우리는 투입 품질을 엄격하게 통제하고, 생산 비용을 최적화하며, 공급망의 안정성을 보장할 수 있습니다. 철강 원자재는 CSVC, POSCO, Nam Kim, Ton Dong A, Yiehphui, Nippon, JFE 등과 같은 선도적인 철강 공장에서 공급됩니다。</p>
+            </div>
+
+            <!-- Japanese Content -->
+            <div class="lang-content" data-lang="ja" style="display:none;">
+                <h2>SMCフーミープレシジョン：プレス加工と精密加工</h2>
+                <p>私たちは、卓越した生産能力を持つ最先端のプレス加工および板金加工ソリューションを提供し、お客様のあらゆる厳しい要件を満たします。</p>
+
+                <h3>生産能力</h3>
+                <p>SMCフーミープレシジョンは、高効率と高精度を保証する最新のプレスラインを備えています。</p>
+                <ul>
+                    <li><strong>ライン1および2:</strong> 6工程800Tプレス機、自動搬送装置（Auto Transfer M/C）を使用し、連続プレス加工が可能（800t-600t-400t、400t-400t-400t）。韓国のサプライヤーSIMPACからの最新ラインです。</li>
+                    <li><strong>ライン3:</strong> 600T単一プレス機。</li>
+                </ul>
+
+                <h3>月間生産能力（予定）</h3>
+                <p>私たちは毎月数百万個のプレス加工品を生産することができ、以下の部品が含まれます。</p>
+                <ul>
+                    <li>
+                        洗濯機フレームフロント (Washing machine Frame Front)
+                        <img src="img/FrameFront.png" alt="洗濯機フレームフロント" class="product-image">
+                    </li>
+                    <li>
+                        洗濯機カバートップ (Washing machine Cover Top)
+                        <img src="img/CoverTop.png" alt="洗濯機カバートップ" class="product-image">
+                    </li>
+                    <li>
+                        冷蔵庫プレートドア (Fridge Plate Door)
+                        <img src="img/PlateDoor.png" alt="冷蔵庫プレートドア" class="product-image">
+                    </li>
+                    <li>
+                        テレビシャーシリア (TV Chassis Rear)
+                        <img src="img/ChassisRear.png" alt="テレビシャーシリア" class="product-image">
+                    </li>
+                    <li>
+                        ブラケットヒンジ (Bracket Hinge)
+                        <img src="img/BracketHinge.png" alt="ブラケットヒンジ" class="product-image">
+                    </li>
+                    <li>
+                        カバーバック (Cover Back)
+                        <img src="img/Coverback.png" class="product-image">
+                    </li>
+                </ul>
+                <p>現在の製品には、洗濯機、冷蔵庫、その他の組み立て製品の部品が含まれます。また、電気、冷凍、自動車産業向けの製品も生産しています。</p>
+
+                <h3>OEM & ODMサービス</h3>
+                <p>最新の生産能力と経験豊富な専門家チームにより、SMCフーミープレシジョンはOEM（お客様の設計に基づく製造）およびODM（要件に基づく設計と製造）サービスを自信を持って提供します。私たちは、正確な仕様と納期を満たす高品質な製品を提供することをお約束します。</p>
+
+                <h3>積極的な鋼材供給</h3>
+                <p>SMCグループの一員として、私たちはSMCフーミーコイルセンターを通じて高品質な鋼材原材料を積極的に調達・供給できるという大きな利点を持っています。これにより、投入品質を厳格に管理し、生産コストを最適化し、サプライチェーンの安定性を確保することができます。鋼材原材料は、CSVC、POSCO、Nam Kim、Ton Dong A、Yiehphui、Nippon、JFEなどの主要な製鉄所から供給されています。</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SMC Group. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for language switching
+        function setLanguage(lang) {
+            localStorage.setItem('preferredLang', lang); // Save preferred language
+            document.querySelectorAll('.lang-content').forEach(content => {
+                if (content.getAttribute('data-lang') === lang) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+            // Update active button state
+            document.querySelectorAll('.lang-selector button').forEach(button => {
+                if (button.onclick.toString().includes(`setLanguage('${lang}')`)) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        // On page load, set language from localStorage or default to Vietnamese
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'vi';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
