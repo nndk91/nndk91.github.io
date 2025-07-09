@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMC Group: Về Chúng Tôi</title>
+    <title id="page-title">Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ</title>
     <style>
         /* CSS chung cho tất cả các trang */
         body {
@@ -156,6 +156,34 @@
             margin-top: 30px;
             border-radius: 10px 10px 0 0;
         }
+        .profile-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .profile-column {
+            flex: 1;
+            min-width: 300px; /* Ensure columns don't get too narrow */
+        }
+        .profile-column ul {
+            margin-left: 0; /* Remove default list margin */
+        }
+        .profile-column ul li {
+            padding-left: 0; /* Remove default list item padding */
+        }
+        .profile-column ul li::before {
+            content: none; /* Remove bullet points */
+        }
+        .profile-image {
+            width: 150px; /* Adjust size as needed */
+            height: 150px;
+            border-radius: 50%; /* Makes it round */
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 15px auto; /* Center and add bottom margin */
+            border: 3px solid #007bff; /* Blue border */
+        }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -193,6 +221,10 @@
             }
             .section-image {
                 height: 150px;
+            }
+            .profile-image {
+                width: 120px;
+                height: 120px;
             }
         }
 
@@ -235,14 +267,21 @@
             .section-image {
                 height: 120px;
             }
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+            .profile-section {
+                flex-direction: column; /* Stack columns on small screens */
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='NMP_0156.jpg'" alt="SMC Phu My Facility" class="header-image">
-        <h1>SMC Group</h1>
-        <p>Giải pháp Cơ khí Chính xác & Thép Chất lượng Cao</p>
+        <h1 id="header-title">Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ</h1>
+        <p id="header-subtitle"></p>
         <div class="lang-selector">
             <button onclick="setLanguage('vi')" class="active">VI</button>
             <button onclick="setLanguage('en')">EN</button>
@@ -253,161 +292,421 @@
     </header>
 
     <nav>
-        <a href="index.html">Trang Chủ</a>
-        <a href="about.html">Về Chúng Tôi</a>
-        <a href="precision.html">SMC Phu My Precision</a>
-        <a href="coil_center.html">SMC Phu My Coil Center</a>
-        <!-- Removed link to applications.html -->
-        <a href="contact.html">Liên Hệ</a>
+        <a href="index.html" data-nav-key="home">Trang Chủ</a>
+        <a href="about.html" data-nav-key="about">Về Khoa Nguyen</a>
+        <a href="precision.html" data-nav-key="precision">SMC Phu My Precision</a>
+        <a href="coil_center.html" data-nav-key="coil_center">SMC Phu My Coil Center</a>
+        <a href="contact.html" data-nav-key="contact">Liên Hệ</a>
     </nav>
 
     <div class="container">
         <section id="about">
             <!-- Vietnamese Content -->
             <div class="lang-content" data-lang="vi">
-                <h2>Về Chúng Tôi</h2>
-                <h3>SMC Group</h3>
-                <p>Với hơn 35 năm kinh nghiệm trong lĩnh vực kinh doanh, gia công và sản xuất sắt thép, SMC Group là một tập đoàn vững mạnh, không ngừng nỗ lực cải tiến và hoàn thiện để cung cấp sản phẩm và dịch vụ chất lượng cao nhất.</p>
+                <h2>Về Khoa Nguyen</h2>
+                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="Khoa D. Nguyen Profile" class="profile-image">
+                <h3>Tóm tắt</h3>
+                <p>Kinh doanh thép, từ thép đen đến thép màu, chuyên môn về chuỗi cung ứng thép.</p>
 
-                <h3>SMC Phu My Precision (SMC Cơ Khí Chính Xác)</h3>
-                <img src="img/1O0A6698.jpg" onerror="this.onerror=null;this.src='1O0A6698.jpg'" alt="SMC Phu My Precision Facility" class="section-image">
-                <p>Được thành lập vào ngày 19/01/2021, SMC Phu My Precision chuyên về sản xuất và gia công các sản phẩm dập (Press) và ép nhựa (Injection).</p>
+                <div class="profile-section">
+                    <div class="profile-column">
+                        <h3>Kỹ năng hàng đầu</h3>
+                        <ul>
+                            <li>Lãnh đạo</li>
+                            <li>Làm việc nhóm</li>
+                            <li>Quản lý thời gian</li>
+                        </ul>
+                    </div>
+                    <div class="profile-column">
+                        <h3>Ngôn ngữ</h3>
+                        <ul>
+                            <li>Tiếng Anh (Chuyên nghiệp)</li>
+                            <li>Tiếng Việt (Bản ngữ)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Kinh nghiệm</h3>
+                <h4>SMC Phu My Precision Co. Ltd</h4>
+                <p><strong>Giám đốc Phát triển Kinh doanh</strong><br>Tháng 6 năm 2025 - Hiện tại (2 tháng)<br>Phú Mỹ, Bà Rịa-Vũng Tàu, Việt Nam</p>
+
+                <h4>SMC Phu My Steel Processing Co.Ltd</h4>
+                <p><strong>Phó Giám đốc</strong><br>Tháng 1 năm 2025 - Tháng 6 năm 2025 (6 tháng)</p>
+
+                <h4>VSSC Steel Center LLC</h4>
+                <p><strong>Phó Giám đốc</strong><br>Tháng 3 năm 2021 - Tháng 1 năm 2025 (3 năm 11 tháng)</p>
+
+                <h4>SMC Steel Co. Ltd (Coil Center)</h4>
+                <p><strong>Trưởng phòng Bán hàng</strong><br>Tháng 8 năm 2019 - Tháng 2 năm 2021 (1 năm 7 tháng)</p>
+                <p><strong>Chuyên viên Bán hàng</strong><br>Tháng 1 năm 2018 - Tháng 8 năm 2019 (1 năm 8 tháng)<br>H. Tân Thành, Tỉnh Bà Rịa-Vũng Tàu, Việt Nam</p>
+
+                <h4>SMC Trading Investment JSC</h4>
+                <p><strong>Phó Trưởng phòng</strong><br>Tháng 9 năm 2017 - Tháng 1 năm 2018 (5 tháng)<br>396 Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh</p>
+                <p><strong>Chuyên viên Bán hàng</strong><br>Tháng 8 năm 2014 - Tháng 9 năm 2017 (3 năm 2 tháng)<br>396 Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh</p>
                 <ul>
-                    <li><strong>Vốn đầu tư:</strong> 10.5 triệu USD</li>
-                    <li><strong>Nhân sự:</strong> 300 người</li>
-                    <li><strong>Diện tích nhà máy:</strong> 35,752 m² </li>
-                    <li><strong>Địa chỉ:</strong> Đường N7, KCN Phú Mỹ II, Phường Phú Mỹ, TP. Hồ Chí Minh (P. Tân Phước, TP. Phú Mỹ, Tỉnh Bà Rịa Vũng Tàu - cũ)</li>
+                    <li>Cập nhật giá thép bao gồm Thép cuộn, HRC, HRS, HRP.</li>
+                    <li>Tìm kiếm thị trường, khách hàng và đối tác thương mại mới.</li>
                 </ul>
-                <p>Với triết lý kinh doanh "Sự thấu hiểu đối tác, thấu hiểu chính mình. Tiên phong trong mọi hoạt động" và "Minh bạch, Uy tín và Chuyên nghiệp. Hài hòa mọi lợi ích", SMC Phu My Precision luôn đặt sự hài lòng của khách hàng lên hàng đầu.</p>
 
-                <h3>SMC Phu My Coil Center (SMC Trung Tâm Thép Cuộn)</h3>
-                <img src="img/1O0A6592.jpg" onerror="this.onerror=null;this.src='1O0A6592.jpg'" alt="SMC Phu My Coil Center Facility" class="section-image">
-                <p>Là đơn vị thành viên của SMC Group, SMC Phu My Coil Center chuyên sản xuất và kinh doanh các sản phẩm thép được gia công với độ chính xác cao, phục vụ cho các ngành xây dựng, giao thông vận tải, điện, điện tử, điện lạnh và hàng gia dụng.</p>
+                <h4>SENDO Joint Venture Co. Ltd</h4>
+                <p><strong>Chuyên viên Bán hàng Xuất khẩu</strong><br>Tháng 4 năm 2016 - Tháng 1 năm 2018 (1 năm 10 tháng)<br>Đường 1A, KCN Phú Mỹ 1, Huyện Tân Thành, Bà Rịa Vũng Tàu</p>
                 <ul>
-                    <li><strong>Hệ thống thiết bị hiện đại</strong> và phương pháp quản lý khoa học theo tiêu chuẩn ISO 9001:2015, ISO 14001:2015, ISO 45001:2018.</li>
-                    <li><strong>Năng lực sản xuất:</strong> 200.000 tấn/năm.</li>
-                    <li><strong>Địa chỉ:</strong> Đường N7, KCN Phú Mỹ II, Phường Phú Mỹ, TP. Hồ Chí Minh (P. Tân Phước, TP. Phú Mỹ, Tỉnh Bà Rịa Vũng Tàu - cũ)</li>
+                    <li>Phụ trách kinh doanh xuất khẩu ống thép.</li>
+                </ul>
+
+                <hr>
+
+                <h3>Giáo dục</h3>
+                <h4>Đại học Công nghệ Sydney</h4>
+                <p><strong>Thạc sĩ Công nghệ thông tin, Kinh doanh thông minh</strong> (2013-2014)</p>
+                <p><strong>Cử nhân Khoa học Công nghệ thông tin, Lập trình doanh nghiệp</strong> (2009-2012)</p>
+
+                <h3>Các chứng nhận</h3>
+                <ul>
+                    <li>TECH16 Large Language Models for Business with Python Winter 2024-2025 Stanford University</li>
+                    <li>LLM Engineering: Master AI, Large Language Models & Agents - Udemy 2024</li>
+                    <li>The Complete Agentic AI Engineering Course - Udemy 2025</li>
                 </ul>
             </div>
 
             <!-- English Content -->
             <div class="lang-content" data-lang="en" style="display:none;">
-                <h2>About Us</h2>
-                <h3>SMC Group</h3>
-                <p>With over 35 years of experience in the trading, processing, and manufacturing of iron and steel of all kinds, SMC Group is a strong corporation, continuously striving to improve and perfect to provide the highest quality products and services.</p>
+                <h2>About Khoa Nguyen</h2>
+                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="Khoa D. Nguyen Profile" class="profile-image">
+                <h3>Summary</h3>
+                <p>Steel sales, from ferrous to non-ferrous, steel supply chain expertise.</p>
 
-                <h3>SMC Phu My Precision (SMC Precision Mechanical)</h3>
-                <img src="img/1O0A6698.jpg" onerror="this.onerror=null;this.src='1O0A6698.jpg'" alt="SMC Phu My Precision Facility" class="section-image">
-                <p>Established on January 19, 2021, SMC Phu My Precision specializes in the production and processing of pressed (stamped) and injection molded products.</p>
+                <div class="profile-section">
+                    <div class="profile-column">
+                        <h3>Top Skills</h3>
+                        <ul>
+                            <li>Leadership</li>
+                            <li>Teamwork</li>
+                            <li>Time Management</li>
+                        </ul>
+                    </div>
+                    <div class="profile-column">
+                        <h3>Languages</h3>
+                        <ul>
+                            <li>English (Professional Working)</li>
+                            <li>Vietnamese (Native or Bilingual)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Experience</h3>
+                <h4>SMC Phu My Precision Co. Ltd</h4>
+                <p><strong>Director of Business Development</strong><br>June 2025 - Present (2 months)<br>Phú Mỹ, Ba Ria-Vung Tau, Vietnam</p>
+
+                <h4>SMC Phu My Steel Processing Co.Ltd</h4>
+                <p><strong>Deputy Director</strong><br>January 2025 - June 2025 (6 months)</p>
+
+                <h4>VSSC Steel Center LLC</h4>
+                <p><strong>Vice President</strong><br>March 2021 - January 2025 (3 years 11 months)</p>
+
+                <h4>SMC Steel Co. Ltd (Coil Center)</h4>
+                <p><strong>Sales Manager</strong><br>August 2019 - February 2021 (1 year 7 months)</p>
+                <p><strong>Sales Executive</strong><br>January 2018 - August 2019 (1 year 8 months)<br>H. Tân Thành, Tỉnh Bà Rịa-Vũng Tàu, Vietnam</p>
+
+                <h4>SMC Trading Investment JSC</h4>
+                <p><strong>Deputy Manager</strong><br>September 2017 - January 2018 (5 months)<br>396 Ung Van Khiem St, Ward 25, Binh Thanh District, Ho Chi Minh City</p>
+                <p><strong>Sales Executive</strong><br>August 2014 - September 2017 (3 years 2 months)<br>396 Ung Van Khiem St, Ward 25, Binh Thanh District, Ho Chi Minh City</p>
                 <ul>
-                    <li><strong>Investment Capital:</strong> 10.5 million USD</li>
-                    <li><strong>Personnel:</strong> 300 people</li>
-                    <li><strong>Factory Area:</strong> 35,752 m² </li>
-                    <li><strong>Address:</strong> Road N7, Phu My II Industrial Zone, Phu My Ward, Ho Chi Minh City (formerly Tan Phuoc Ward, Phu My Town, Ba Ria Vung Tau Province)</li>
+                    <li>Update on Steel Trading Price include Wire Rod, HRC, HRS, HRP.</li>
+                    <li>Find new market, customer and trading partners.</li>
                 </ul>
-                <p>With the business philosophy "Understanding others, understanding ourselves. Pioneering in all activities" and "Being Transparent, Prestigious and Professional. Harmonizing all interests", SMC Phu My Precision always prioritizes customer satisfaction.</p>
 
-                <h3>SMC Phu My Coil Center (SMC Coil Steel Center)</h3>
-                <img src="img/1O0A6592.jpg" onerror="this.onerror=null;this.src='1O0A6592.jpg'" alt="SMC Phu My Coil Center Facility" class="section-image">
-                <p>As a member unit of SMC Group, SMC Phu My Coil Center specializes in manufacturing and trading high-precision steel processed products, serving the construction, transportation, electricity, electronics, refrigeration, and household goods industries.</p>
+                <h4>SENDO Joint Venture Co. Ltd</h4>
+                <p><strong>Export Sales Executive</strong><br>April 2016 - January 2018 (1 year 10 months)<br>1A street, Phu My 1 IZ, Tan Thanh Dist., Ba Ria Vung Tau</p>
                 <ul>
-                    <li><strong>Modern equipment system</strong> and scientific management methods according to ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 standards.</li>
-                    <li><strong>Production Capacity:</strong> 200,000 tons/year.</li>
-                    <li><strong>Address:</strong> Road N7, Phu My II Industrial Zone, Phu My Ward, Ho Chi Minh City (formerly Tan Phuoc Ward, Phu My Town, Ba Ria Vung Tau Province)</li>
+                    <li>In charge of exporting pipe business.</li>
+                </ul>
+
+                <hr>
+
+                <h3>Education</h3>
+                <h4>University of Technology Sydney</h4>
+                <p><strong>Master in IT, Business Intelligent</strong> (2013-2014)</p>
+                <p><strong>Bachelor of Science in Information and Technology, Enterprise Programming</strong> (2009-2012)</p>
+
+                <h3>Certifications</h3>
+                <ul>
+                    <li>TECH16 Large Language Models for Business with Python Winter 2024-2025 Stanford University</li>
+                    <li>LLM Engineering: Master AI, Large Language Models & Agents - Udemy 2024</li>
+                    <li>The Complete Agentic AI Engineering Course - Udemy 2025</li>
                 </ul>
             </div>
 
             <!-- Chinese Content -->
             <div class="lang-content" data-lang="zh" style="display:none;">
-                <h2>关于我们</h2>
-                <h3>SMC集团</h3>
-                <p>SMC集团在各类钢铁贸易、加工和制造领域拥有超过35年的经验，是一个强大的企业，不断努力改进和完善，以提供最高质量的产品和服务。</p>
+                <h2>关于阮科</h2>
+                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="阮科 Profile" class="profile-image">
+                <h3>摘要</h3>
+                <p>钢铁销售，从黑色金属到有色金属，钢铁供应链专业知识。</p>
 
-                <h3>SMC富美精密（SMC精密机械）</h3>
-                <img src="img/1O0A6698.jpg" onerror="this.onerror=null;this.src='1O0A6698.jpg'" alt="SMC Phu My Precision Facility" class="section-image">
-                <p>SMC富美精密成立于2021年1月19日，专业生产和加工冲压和注塑产品。</p>
+                <div class="profile-section">
+                    <div class="profile-column">
+                        <h3>顶级技能</h3>
+                        <ul>
+                            <li>领导力</li>
+                            <li>团队合作</li>
+                            <li>时间管理</li>
+                        </ul>
+                    </div>
+                    <div class="profile-column">
+                        <h3>语言</h3>
+                        <ul>
+                            <li>英语 (专业工作水平)</li>
+                            <li>越南语 (母语或双语)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>经验</h3>
+                <h4>SMC富美精密有限公司</h4>
+                <p><strong>业务发展总监</strong><br>2025年6月 - 至今 (2个月)<br>越南巴地头顿省富美</p>
+
+                <h4>SMC富美钢铁加工有限公司</h4>
+                <p><strong>副总监</strong><br>2025年1月 - 2025年6月 (6个月)</p>
+
+                <h4>VSSC钢铁中心有限公司</h4>
+                <p><strong>副总监</strong><br>2021年3月 - 2025年1月 (3年11个月)</p>
+
+                <h4>SMC钢铁有限公司 (钢卷中心)</h4>
+                <p><strong>销售经理</strong><br>2019年8月 - 2021年2月 (1年7个月)</p>
+                <p><strong>销售主管</strong><br>2018年1月 - 2019年8月 (1年8个月)<br>越南巴地头顿省新城县</p>
+
+                <h4>SMC贸易投资股份公司</h4>
+                <p><strong>副经理</strong><br>2017年9月 - 2018年1月 (5个月)<br>胡志明市平盛区25坊翁文谦街396号</p>
+                <p><strong>销售主管</strong><br>2014年8月 - 2017年9月 (3年2个月)<br>胡志明市平盛区25坊翁文谦街396号</p>
                 <ul>
-                    <li><strong>投资资本：</strong> 1050万美元</li>
-                    <li><strong>员工：</strong> 300人</li>
-                    <li><strong>厂房面积：</strong> 35,752 平方米</li>
-                    <li><strong>地址：</strong> 胡志明市富美坊富美二工业区N7路（原巴地头顿省富美市新福坊）</li>
+                    <li>更新钢材贸易价格，包括盘条、热轧卷、热轧板、热轧带钢。</li>
+                    <li>寻找新市场、客户和贸易伙伴。</li>
                 </ul>
-                <p>秉承“理解他人，理解自我。在所有活动中先行”以及“透明、信誉和专业。和谐所有利益”的经营理念，SMC富美精密始终将客户满意度放在首位。</p>
 
-                <h3>SMC富美钢卷中心（SMC钢卷中心）</h3>
-                <img src="img/1O0A6592.jpg"  onerror="this.onerror=null;this.src='1O0A6592.jpg'" alt="SMC Phu My Coil Center Facility" class="section-image">
-                <p>作为SMC集团的成员单位，SMC富美钢卷中心专业生产和贸易高精度钢材加工产品，服务于建筑、交通、电力、电子、制冷和家居用品等行业。</p>
+                <h4>SENDO合资有限公司</h4>
+                <p><strong>出口销售主管</strong><br>2016年4月 - 2018年1月 (1年10个月)<br>巴地头顿省新城县富美1工业区1A街</p>
                 <ul>
-                    <li><strong>现代化设备系统</strong>和符合ISO 9001:2015、ISO 14001:2015、ISO 45001:2018标准的科学管理方法。</li>
-                    <li><strong>生产能力：</strong> 每年20万吨。</li>
-                    <li><strong>地址：</strong> 胡志明市富美坊富美二工业区N7路（原巴地头顿省富美市新福坊）</li>
+                    <li>负责出口管道业务。</li>
+                </ul>
+
+                <hr>
+
+                <h3>教育背景</h3>
+                <h4>悉尼科技大学</h4>
+                <p><strong>信息技术硕士，商业智能</strong> (2013-2014)</p>
+                <p><strong>信息技术理学学士，企业编程</strong> (2009-2012)</p>
+
+                <h3>证书</h3>
+                <ul>
+                    <li>TECH16 Large Language Models for Business with Python Winter 2024-2025 Stanford University</li>
+                    <li>LLM Engineering: Master AI, Large Language Models & Agents - Udemy 2024</li>
+                    <li>The Complete Agentic AI Engineering Course - Udemy 2025</li>
                 </ul>
             </div>
 
             <!-- Korean Content -->
             <div class="lang-content" data-lang="ko" style="display:none;">
-                <h2>회사 소개</h2>
-                <h3>SMC 그룹</h3>
-                <p>SMC 그룹은 35년 이상의 철강 무역, 가공 및 제조 분야 경험을 바탕으로, 최고 품질의 제품과 서비스를 제공하기 위해 끊임없이 개선하고 완벽을 추구하는 강력한 기업입니다.</p>
+                <h2>응우옌 코아 소개</h2>
+                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="응우옌 코아 Profile" class="profile-image">
+                <h3>요약</h3>
+                <p>철금속부터 비철금속까지 철강 판매, 철강 공급망 전문 지식.</p>
 
-                <h3>SMC 푸미 정밀 (SMC 정밀 기계)</h3>
-                <img src="img/1O0A6698.jpg" onerror="this.onerror=null;this.src='1O0A6698.jpg'" alt="SMC Phu My Precision Facility" class="section-image">
-                <p>2021년 1월 19일에 설립된 SMC 푸미 정밀은 프레스(스탬핑) 및 사출 성형 제품의 생산 및 가공을 전문으로 합니다.</p>
+                <div class="profile-section">
+                    <div class="profile-column">
+                        <h3>최고 기술</h3>
+                        <ul>
+                            <li>리더십</li>
+                            <li>팀워크</li>
+                            <li>시간 관리</li>
+                        </ul>
+                    </div>
+                    <div class="profile-column">
+                        <h3>언어</h3>
+                        <ul>
+                            <li>영어 (전문 업무 수준)</li>
+                            <li>베트남어 (원어민 또는 이중 언어)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>경험</h3>
+                <h4>SMC 푸미 정밀 유한회사</h4>
+                <p><strong>사업 개발 이사</strong><br>2025년 6월 - 현재 (2개월)<br>베트남 바리아붕따우성 푸미</p>
+
+                <h4>SMC 푸미 철강 가공 유한회사</h4>
+                <p><strong>부사장</strong><br>2025년 1월 - 2025년 6월 (6개월)</p>
+
+                <h4>VSSC 철강 센터 LLC</h4>
+                <p><strong>부사장</strong><br>2021년 3월 - 2025년 1월 (3년 11개월)</p>
+
+                <h4>SMC 철강 유한회사 (코일 센터)</h4>
+                <p><strong>영업 관리자</strong><br>2019년 8월 - 2021년 2월 (1년 7개월)</p>
+                <p><strong>영업 담당자</strong><br>2018년 1월 - 2019년 8월 (1년 8개월)<br>베트남 바리아붕따우성 탄탄현</p>
+
+                <h4>SMC 무역 투자 JSC</h4>
+                <p><strong>부관리자</strong><<br>2017년 9월 - 2018년 1월 (5개월)<br>호치민시 빈탄구 25동 웅반키엠 396번지</p>
+                <p><strong>영업 담당자</strong><br>2014년 8월 - 2017년 9월 (3년 2개월)<br>호치민시 빈탄구 25동 웅반키엠 396번지</p>
                 <ul>
-                    <li><strong>투자 자본:</strong> 1,050만 달러</li>
-                    <li><strong>직원:</strong> 300명</li>
-                    <li><strong>공장 면적:</strong> 35,752 m² </li>
-                    <li><strong>주소:</strong> 호치민시 푸미 워드 푸미 II 산업 단지 N7 도로 (구 바리아 붕따우 성 푸미 타운 탄푹 워드)</li>
+                    <li>철강 거래 가격 업데이트 (선재, HRC, HRS, HRP 포함).</li>
+                    <li>새로운 시장, 고객 및 무역 파트너 발굴.</li>
                 </ul>
-                <p>"타인을 이해하고 자신을 이해하라. 모든 활동에서 선구자가 되라"는 경영 철학과 "투명하고, 신뢰할 수 있으며, 전문적이어라. 모든 이해관계를 조화롭게 하라"는 원칙을 바탕으로, SMC 푸미 정밀은 항상 고객 만족을 최우선으로 합니다.</p>
 
-                <h3>SMC 푸미 코일 센터 (SMC 코일 철강 센터)</h3>
-                <img src="img/1O0A6592.jpg" onerror="this.onerror=null;this.src='1O0A6592.jpg'" alt="SMC Phu My Coil Center Facility" class="section-image">
-                <p>SMC 그룹의 계열사인 SMC 푸미 코일 센터는 건설, 운송, 전기, 전자, 냉동 및 가정용품 산업에 사용되는 고정밀 강철 가공 제품을 제조 및 거래합니다.</p>
+                <h4>SENDO 합작 유한회사</h4>
+                <p><strong>수출 영업 담당자</strong><br>2016년 4월 - 2018년 1월 (1년 10개월)<br>바리아붕따우성 탄탄현 푸미 1 산업 단지 1A 거리</p>
                 <ul>
-                    <li>ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 표준에 따른 <strong>현대적인 장비 시스템</strong>과 과학적인 관리 방법.</li>
-                    <li><strong>생산 능력:</strong> 연간 200,000톤.</li>
-                    <li><strong>주소:</strong> 호치민시 푸미 워드 푸미 II 산업 단지 N7 도로 (구 바리아 붕따우 성 푸미 타운 탄푹 워드)</li>
+                    <li>파이프 사업 수출 담당.</li>
+                </ul>
+
+                <hr>
+
+                <h3>학력</h3>
+                <h4>시드니 공과대학교</h4>
+                <p><strong>IT 석사, 비즈니스 인텔리전스</strong> (2013-2014)</p>
+                <p><strong>정보 기술 과학 학사, 기업 프로그래밍</strong> (2009-2012)</p>
+
+                <h3>자격증</h3>
+                <ul>
+                    <li>TECH16 Large Language Models for Business with Python Winter 2024-2025 Stanford University</li>
+                    <li>LLM Engineering: Master AI, Large Language Models & Agents - Udemy 2024</li>
+                    <li>The Complete Agentic AI Engineering Course - Udemy 2025</li>
                 </ul>
             </div>
 
             <!-- Japanese Content -->
             <div class="lang-content" data-lang="ja" style="display:none;">
-                <h2>会社概要</h2>
-                <h3>SMCグループ</h3>
-                <p>SMCグループは、あらゆる種類の鉄鋼の貿易、加工、製造分野で35年以上の経験を持ち、最高品質の製品とサービスを提供するために継続的に改善と完成に努める強力な企業です。</p>
+                <h2>グエン・コアについて</h2>
+                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="グエン・コア Profile" class="profile-image">
+                <h3>概要</h3>
+                <p>鉄鋼販売、鉄鋼から非鉄鋼まで、鉄鋼サプライチェーンの専門知識。</p>
 
-                <h3>SMCフーミープレシジョン（SMC精密機械）</h3>
-                <img src="img/1O0A6698.jpg" onerror="this.onerror=null;this.src='1O0A6698.jpg'" alt="SMC Phu My Precision Facility" class="section-image">
-                <p>2021年1月19日に設立されたSMCフーミープレシジョンは、プレス加工品および射出成形品の製造と加工を専門としています。</p>
+                <div class="profile-section">
+                    <div class="profile-column">
+                        <h3>トップスキル</h3>
+                        <ul>
+                            <li>リーダーシップ</li>
+                            <li>チームワーク</li>
+                            <li>時間管理</li>
+                        </ul>
+                    </div>
+                    <div class="profile-column">
+                        <h3>言語</h3>
+                        <ul>
+                            <li>英語 (ビジネスレベル)</li>
+                            <li>ベトナム語 (ネイティブまたはバイリンガル)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>職務経歴</h3>
+                <h4>SMCフーミープレシジョン株式会社</h4>
+                <p><strong>事業開発ディレクター</strong><br>2025年6月 - 現在 (2ヶ月)<br>ベトナム、バリア・ブンタウ省フーミー</p>
+
+                <h4>SMCフーミースチール加工株式会社</h4>
+                <p><strong>副ディレクター</strong><br>2025年1月 - 2025年6月 (6ヶ月)</p>
+
+                <h4>VSSCスチールセンターLLC</h4>
+                <p><strong>副ディレクター</strong><br>2021年3月 - 2025年1月 (3年11ヶ月)</p>
+
+                <h4>SMCスチール株式会社 (コイルセンター)</h4>
+                <p><strong>営業部長</strong><br>2019年8月 - 2021年2月 (1年7ヶ月)</p>
+                <p><strong>営業担当</strong><br>2018年1月 - 2019年8月 (1年8ヶ月)<br>ベトナム、バリア・ブンタウ省タンタイン県</p>
+
+                <h4>SMCトレーディングインベストメントJSC</h4>
+                <p><strong>副部長</strong><br>2017年9月 - 2018年1月 (5ヶ月)<br>ホーチミン市ビンタイン区25区ウンヴァンキエム通り396番地</p>
+                <p><strong>営業担当</strong><br>2014年8月 - 2017年9月 (3年2ヶ月)<br>ホーチミン市ビンタイン区25区ウンヴァンキエム通り396番地</p>
                 <ul>
-                    <li><strong>投資資本:</strong> 1,050万米ドル</li>
-                    <li><strong>従業員:</strong> 300名</li>
-                    <li><strong>工場面積:</strong> 35,752 m² </li>
-                    <li><strong>所在地:</strong> ホーチミン市フーミー区フーミーII工業団地N7通り（旧バリア・ブンタウ省フーミー町タンフック区）</li>
+                    <li>線材、HRC、HRS、HRPを含む鉄鋼取引価格の更新。</li>
+                    <li>新しい市場、顧客、貿易パートナーの開拓。</li>
                 </ul>
-                <p>「他者を理解し、自己を理解する。すべての活動において先駆者となる」という経営理念と、「透明性、信頼性、専門性。すべての利益を調和させる」という原則に基づき、SMCフーミープレシジョンは常にお客様の満足度を最優先しています。</p>
 
-                <h3>SMCフーミーコイルセンター（SMCコイル鋼材センター）</h3>
-                <img src="img/1O0A6592.jpg" onerror="this.onerror=null;this.src='1O0A6592.jpg'" alt="SMC Phu My Coil Center Facility" class="section-image">
-                <p>SMCグループの一員であるSMCフーミーコイルセンターは、建設、輸送、電気、電子、冷凍、家庭用品産業向けの高精度鋼材加工製品の製造と取引を専門としています。</p>
+                <h4>SENDO合弁会社</h4>
+                <p><strong>輸出営業担当</strong><br>2016年4月 - 2018年1月 (1年10ヶ月)<br>バリア・ブンタウ省タンタイン地区フーミー1工業団地1A通り</p>
                 <ul>
-                    <li>ISO 9001:2015、ISO 14001:2015、ISO 45001:2018規格に準拠した<strong>最新の設備システム</strong>と科学的な管理方法。</li>
-                    <li><strong>生産能力:</strong> 年間200,000トン。</li>
-                    <li><strong>所在地:</strong> ホーチミン市フーミー区フーミーII工業団地N7通り（旧バリア・ブンタウ省フーミー町タンフック区）</li>
+                    <li>パイプ事業の輸出を担当。</li>
+                </ul>
+
+                <hr>
+
+                <h3>学歴</h3>
+                <h4>シドニー工科大学</h4>
+                <p><strong>IT修士、ビジネスインテリジェンス</strong> (2013-2014)</p>
+                <p><strong>情報技術科学学士、エンタープライズプログラミング</strong> (2009-2012)</p>
+
+                <h3>資格</h3>
+                <ul>
+                    <li>TECH16 Large Language Models for Business with Python Winter 2024-2025 Stanford University</li>
+                    <li>LLM Engineering: Master AI, Large Language Models & Agents - Udemy 2024</li>
+                    <li>The Complete Agentic AI Engineering Course - Udemy 2025</li>
                 </ul>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 SMC Group. All rights reserved.</p>
+        <p>&copy; 2025 Khoa Nguyen. All rights reserved.</p>
     </footer>
 
     <script>
+        // Translations for titles and navigation links
+        const translations = {
+            'vi': {
+                'pageTitle': 'Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ',
+                'headerTitle': 'Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ',
+                'headerSubtitle': '', // Empty as requested
+                'home': 'Trang Chủ',
+                'about': 'Về Khoa Nguyen',
+                'precision': 'SMC Phu My Precision',
+                'coil_center': 'SMC Phu My Coil Center',
+                'contact': 'Liên Hệ'
+            },
+            'en': {
+                'pageTitle': 'Deputy Business Development Director at SMC Phu My',
+                'headerTitle': 'Deputy Business Development Director at SMC Phu My',
+                'headerSubtitle': '', // Empty as requested
+                'home': 'Home',
+                'about': 'About Khoa Nguyen',
+                'precision': 'SMC Phu My Precision',
+                'coil_center': 'SMC Phu My Coil Center',
+                'contact': 'Contact'
+            },
+            'zh': {
+                'pageTitle': 'SMC富美业务发展副总裁',
+                'headerTitle': 'SMC富美业务发展副总裁',
+                'headerSubtitle': '', // Empty as requested
+                'home': '主页',
+                'about': '关于阮科',
+                'precision': 'SMC富美精密',
+                'coil_center': 'SMC富美钢卷中心',
+                'contact': '联系我们'
+            },
+            'ko': {
+                'pageTitle': 'SMC 푸미 사업 개발 부사장',
+                'headerTitle': 'SMC 푸미 사업 개발 부사장',
+                'headerSubtitle': '', // Empty as requested
+                'home': '홈',
+                'about': '응우옌 코아 소개',
+                'precision': 'SMC 푸미 정밀',
+                'coil_center': 'SMC 푸미 코일 센터',
+                'contact': '문의하기'
+            },
+            'ja': {
+                'pageTitle': 'SMCフーミー事業開発担当副社長',
+                'headerTitle': 'SMCフーミー事業開発担当副社長',
+                'headerSubtitle': '', // Empty as requested
+                'home': 'ホーム',
+                'about': 'グエン・コアについて',
+                'precision': 'SMCフーミープレシジョン',
+                'coil_center': 'SMCフーミーコイルセンター',
+                'contact': 'お問い合わせ'
+            }
+        };
+
         // JavaScript for language switching
         function setLanguage(lang) {
             localStorage.setItem('preferredLang', lang); // Save preferred language
+
+            // Update main content visibility
             document.querySelectorAll('.lang-content').forEach(content => {
                 if (content.getAttribute('data-lang') === lang) {
                     content.style.display = 'block';
@@ -415,12 +714,29 @@
                     content.style.display = 'none';
                 }
             });
+
             // Update active button state
             document.querySelectorAll('.lang-selector button').forEach(button => {
                 if (button.onclick.toString().includes(`setLanguage('${lang}')`)) {
                     button.classList.add('active');
                 } else {
                     button.classList.remove('active');
+                }
+            });
+
+            // Update page title
+            document.getElementById('page-title').textContent = translations[lang].pageTitle;
+
+            // Update header titles and subtitles
+            document.getElementById('header-title').textContent = translations[lang].headerTitle;
+            document.getElementById('header-subtitle').textContent = translations[lang].headerSubtitle;
+
+
+            // Update navigation links
+            document.querySelectorAll('nav a').forEach(link => {
+                const key = link.getAttribute('data-nav-key');
+                if (translations[lang][key]) {
+                    link.textContent = translations[lang][key];
                 }
             });
         }

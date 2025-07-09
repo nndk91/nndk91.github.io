@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMC Group: SMC Phu My Coil Center</title>
+    <title id="page-title">Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ</title>
     <style>
         /* CSS chung cho tất cả các trang */
         body {
@@ -241,8 +241,8 @@
 <body>
     <header>
         <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='NMP_0156.jpg'" alt="SMC Phu My Facility" class="header-image">
-        <h1>SMC Group</h1>
-        <p>Giải pháp Cơ khí Chính xác & Thép Chất lượng Cao</p>
+        <h1 id="header-title">Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ</h1>
+        <p id="header-subtitle"></p>
         <div class="lang-selector">
             <button onclick="setLanguage('vi')" class="active">VI</button>
             <button onclick="setLanguage('en')">EN</button>
@@ -253,12 +253,11 @@
     </header>
 
     <nav>
-        <a href="index.html">Trang Chủ</a>
-        <a href="about.html">Về Chúng Tôi</a>
-        <a href="precision.html">SMC Phu My Precision</a>
-        <a href="coil_center.html">SMC Phu My Coil Center</a>
-        <!-- Removed link to applications.html -->
-        <a href="contact.html">Liên Hệ</a>
+        <a href="index.html" data-nav-key="home">Trang Chủ</a>
+        <a href="about.html" data-nav-key="about">Về Khoa Nguyen</a>
+        <a href="precision.html" data-nav-key="precision">SMC Phu My Precision</a>
+        <a href="coil_center.html" data-nav-key="coil_center">SMC Phu My Coil Center</a>
+        <a href="contact.html" data-nav-key="contact">Liên Hệ</a>
     </nav>
 
     <div class="container">
@@ -534,13 +533,69 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 SMC Group. All rights reserved.</p>
+        <p>&copy; 2025 Khoa Nguyen. All rights reserved.</p>
     </footer>
 
     <script>
+        // Translations for titles and navigation links
+        const translations = {
+            'vi': {
+                'pageTitle': 'Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ',
+                'headerTitle': 'Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ',
+                'headerSubtitle': '', // Empty as requested
+                'home': 'Trang Chủ',
+                'about': 'Về Khoa Nguyen',
+                'precision': 'SMC Phu My Precision',
+                'coil_center': 'SMC Phu My Coil Center',
+                'contact': 'Liên Hệ'
+            },
+            'en': {
+                'pageTitle': 'Deputy Business Development Director at SMC Phu My',
+                'headerTitle': 'Deputy Business Development Director at SMC Phu My',
+                'headerSubtitle': '', // Empty as requested
+                'home': 'Home',
+                'about': 'About Khoa Nguyen',
+                'precision': 'SMC Phu My Precision',
+                'coil_center': 'SMC Phu My Coil Center',
+                'contact': 'Contact'
+            },
+            'zh': {
+                'pageTitle': 'SMC富美业务发展副总裁',
+                'headerTitle': 'SMC富美业务发展副总裁',
+                'headerSubtitle': '', // Empty as requested
+                'home': '主页',
+                'about': '关于阮科',
+                'precision': 'SMC富美精密',
+                'coil_center': 'SMC富美钢卷中心',
+                'contact': '联系我们'
+            },
+            'ko': {
+                'pageTitle': 'SMC 푸미 사업 개발 부사장',
+                'headerTitle': 'SMC 푸미 사업 개발 부사장',
+                'headerSubtitle': '', // Empty as requested
+                'home': '홈',
+                'about': '응우옌 코아 소개',
+                'precision': 'SMC 푸미 정밀',
+                'coil_center': 'SMC 푸미 코일 센터',
+                'contact': '문의하기'
+            },
+            'ja': {
+                'pageTitle': 'SMCフーミー事業開発担当副社長',
+                'headerTitle': 'SMCフーミー事業開発担当副社長',
+                'headerSubtitle': '', // Empty as requested
+                'home': 'ホーム',
+                'about': 'グエン・コアについて',
+                'precision': 'SMCフーミープレシジョン',
+                'coil_center': 'SMCフーミーコイルセンター',
+                'contact': 'お問い合わせ'
+            }
+        };
+
         // JavaScript for language switching
         function setLanguage(lang) {
             localStorage.setItem('preferredLang', lang); // Save preferred language
+
+            // Update main content visibility
             document.querySelectorAll('.lang-content').forEach(content => {
                 if (content.getAttribute('data-lang') === lang) {
                     content.style.display = 'block';
@@ -548,12 +603,29 @@
                     content.style.display = 'none';
                 }
             });
+
             // Update active button state
             document.querySelectorAll('.lang-selector button').forEach(button => {
                 if (button.onclick.toString().includes(`setLanguage('${lang}')`)) {
                     button.classList.add('active');
                 } else {
                     button.classList.remove('active');
+                }
+            });
+
+            // Update page title
+            document.getElementById('page-title').textContent = translations[lang].pageTitle;
+
+            // Update header titles and subtitles
+            document.getElementById('header-title').textContent = translations[lang].headerTitle;
+            document.getElementById('header-subtitle').textContent = translations[lang].headerSubtitle;
+
+
+            // Update navigation links
+            document.querySelectorAll('nav a').forEach(link => {
+                const key = link.getAttribute('data-nav-key');
+                if (translations[lang][key]) {
+                    link.textContent = translations[lang][key];
                 }
             });
         }
