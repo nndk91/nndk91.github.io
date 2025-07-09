@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ</title>
+    <style>
+        /* CSS chung cho tất cả các trang */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+         .header-image {
+            width: 100%;
+            height: 250px; /* Fixed height for consistency */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            display: block;
+            margin-bottom: 15px;
+        }
+        .lang-selector {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            display: flex;
+            gap: 5px;
+        }
+        .lang-selector button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .lang-selector button:hover {
+            background-color: #004085;
+        }
+        .lang-selector button.active {
+            background-color: #004085;
+            border: 1px solid #ffffff;
+        }
+        nav {
+            background-color: #0056b3;
+            padding: 0.75rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            display: inline-block;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #004085;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 30px 0;
+        }
+        section {
+            background-color: #ffffff;
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #007bff;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        h3 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        ul li::before {
+            content: '•';
+            color: #007bff;
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .contact-info {
+            background-color: #e2f0ff;
+            padding: 20px;
+            border-left: 6px solid #007bff;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .contact-info a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .profile-image {
+            width: 150px; /* Adjust size as needed */
+            height: 150px;
+            border-radius: 50%; /* Makes it round */
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 15px auto; /* Center and add bottom margin */
+            border: 3px solid #007bff; /* Blue border */
+        }
+        footer {
+            background-color: #004085;
+            color: #ffffff;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav a {
+                padding: 0.75rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            .container {
+                width: 95%;
+                padding: 15px 0;
+            }
+            section {
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 1.7rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .lang-selector {
+                top: 10px;
+                right: 10px;
+                gap: 3px;
+            }
+            .lang-selector button {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                border-bottom: 1px solid #002c5f;
+            }
+            nav a:last-child {
+                border-bottom: none;
+            }
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+            section {
+                margin-bottom: 15px;
+                padding: 15px;
+                border-radius: 5px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.2rem;
+            }
+            .lang-selector {
+                position: static;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='NMP_0156.jpg'" alt="SMC Phu My Facility" class="header-image">
+        <h1 id="header-title">Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ</h1>
+        <p id="header-subtitle"></p>
+        <div class="lang-selector">
+            <button onclick="setLanguage('vi')" class="active">VI</button>
+            <button onclick="setLanguage('en')">EN</button>
+            <button onclick="setLanguage('zh')">ZH</button>
+            <button onclick="setLanguage('ko')">KO</button>
+            <button onclick="setLanguage('ja')">JA</button>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html" data-nav-key="home">Trang Chủ</a>
+        <a href="about.html" data-nav-key="about">Về Khoa Nguyen</a>
+        <a href="precision.html" data-nav-key="precision">SMC Phu My Precision</a>
+        <a href="coil_center.html" data-nav-key="coil_center">SMC Phu My Coil Center</a>
+        <a href="contact.html" data-nav-key="contact">Liên Hệ</a>
+    </nav>
+
+    <div class="container">
+        <section id="contact">
+            <!-- Vietnamese Content -->
+            <div class="lang-content" data-lang="vi">
+                <h2>Liên Hệ Khoa Nguyen</h2>
+                <p>Để thảo luận về các giải pháp thép, dịch vụ gia công chính xác, OEM/ODM, hoặc bất kỳ yêu cầu kinh doanh nào, vui lòng liên hệ trực tiếp với tôi:</p>
+
+                <div class="contact-info">
+                    <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="Khoa D. Nguyễn Profile" class="profile-image">
+                    <h3>Khoa D. Nguyễn</h3>
+                    <p><strong>Chức vụ:</strong> Phó Giám Đốc Phát Triển Kinh Doanh</p>
+                    <p><strong>Email:</strong> <a href="mailto:khoa.nguyen@smc.vn">khoa.nguyen@smc.vn</a></p>
+                    <p><strong>Di động:</strong> +84 917373606</p>
+                    <p><strong>Zalo/Viber/Whatsapp/Kakaotalk/Line:</strong> +84 917373606</p>
+                    <p><strong>WeChat:</strong> kh04nguyen</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nndk91" target="_blank">linkedin.com/in/nndk91</a></p>
+                    <p><strong>Blog:</strong> <a href="https://nguyenngocdangkhoa.com" target="_blank">nguyenngocdangkhoa.com</a></p>
+                </div>
+
+                <h2>Thông tin liên hệ công ty</h2>
+                <div class="contact-info">
+                    <h3>SMC Phu My Precision CO., LTD</h3>
+                    <p><strong>Địa chỉ:</strong> Đường N7, KCN Phú Mỹ II, Phường Phú Mỹ, TP. Hồ Chí Minh (P. Tân Phước, TP. Phú Mỹ, Tỉnh Bà Rịa Vũng Tàu - cũ)</p>
+                    <p><strong>Điện thoại:</strong> (+84-254) 3933 866 | (+84-254) 3933 869</p>
+                    <p><strong>Website:</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                </div>
+
+                <div class="contact-info">
+                    <h3>SMC Phu My Coil Center</h3>
+                    <p><strong>Địa chỉ:</strong> Đường N7, KCN Phú Mỹ II, Phường Phú Mỹ, TP. Hồ Chí Minh (P. Tân Phước, TP. Phú Mỹ, Tỉnh Bà Rịa Vũng Tàu - cũ)</p>
+                    <p><strong>Điện thoại:</strong> (84-254) 3933 595 | (84-254) 3933 600</p>
+                    <p><strong>Website:</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content" data-lang="en" style="display:none;">
+                <h2>Contact Khoa Nguyen</h2>
+                <p>To discuss steel solutions, precision machining services, OEM/ODM, or any business inquiries, please contact me directly:</p>
+
+                <div class="contact-info">
+                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="Khoa D. Nguyen Profile" class="profile-image">
+                    <h3>Khoa D. Nguyen</h3>
+                    <p><strong>Title:</strong> Deputy Business Development Director</p>
+                    <p><strong>Email:</strong> <a href="mailto:khoa.nguyen@smc.vn">khoa.nguyen@smc.vn</a></p>
+                    <p><strong>Mobile:</strong> +84 917373606</p>
+                    <p><strong>Zalo/Viber/Whatsapp/Kakaotalk/Line:</strong> +84 917373606</p>
+                    <p><strong>WeChat:</strong> kh04nguyen</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nndk91" target="_blank">linkedin.com/in/nndk91</a></p>
+                    <p><strong>Blog:</strong> <a href="https://nguyenngocdangkhoa.com" target="_blank">nguyenngocdangkhoa.com</a></p>
+                </div>
+
+                <h2>Company Contact Information</h2>
+                <div class="contact-info">
+                    <h3>SMC Phu My Precision CO., LTD</h3>
+                    <p><strong>Address:</strong> Road N7, Phu My II Industrial Zone, Phu My Ward, Ho Chi Minh City (formerly Tan Phuoc Ward, Phu My Town, Ba Ria Vung Tau Province)</p>
+                    <p><strong>Phone:</strong> (+84-254) 3933 866 | (+84-254) 3933 869</p>
+                    <p><strong>Website:</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                </div>
+
+                <div class="contact-info">
+                    <h3>SMC Phu My Coil Center</h3>
+                    <p><strong>Address:</strong> Road N7, Phu My II Industrial Zone, Phu My Ward, Ho Chi Minh City (formerly Tan Phuoc Ward, Phu My Town, Ba Ria Vung Tau Province)</p>
+                    <p><strong>Phone:</strong> (84-254) 3933 595 | (84-254) 3933 600</p>
+                    <p><strong>Website:</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                </div>
+            </div>
+
+            <!-- Chinese Content -->
+            <div class="lang-content" data-lang="zh" style="display:none;">
+                <h2>联系阮科</h2>
+                <p>如需讨论钢铁解决方案、精密加工服务、OEM/ODM或任何业务咨询，请直接与我联系：</p>
+
+                <div class="contact-info">
+                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="阮科 Profile" class="profile-image">
+                    <h3>阮科</h3>
+                    <p><strong>职位：</strong> 业务发展副总裁</p>
+                    <p><strong>电子邮件：</strong> <a href="mailto:khoa.nguyen@smc.vn">khoa.nguyen@smc.vn</a></p>
+                    <p><strong>手机：</strong> +84 917373606</p>
+                    <p><strong>Zalo/Viber/Whatsapp/Kakaotalk/Line:</strong> +84 917373606</p>
+                    <p><strong>WeChat:</strong> kh04nguyen</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nndk91" target="_blank">linkedin.com/in/nndk91</a></p>
+                    <p><strong>博客：</strong> <a href="https://nguyenngocdangkhoa.com" target="_blank">nguyenngocdangkhoa.com</a></p>
+                </div>
+
+                <h2>公司联系方式</h2>
+                <div class="contact-info">
+                    <h3>SMC富美精密有限公司</h3>
+                    <p><strong>地址：</strong> 胡志明市富美坊富美二工业区N7路（原巴地头顿省富美市新福坊）</p>
+                    <p><strong>电话：</strong> (+84-254) 3933 866 | (+84-254) 3933 869</p>
+                    <p><strong>网站：</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                </div>
+
+                <div class="contact-info">
+                    <h3>SMC富美钢卷中心</h3>
+                    <p><strong>地址：</strong> 胡志明市富美坊富美二工业区N7路（原巴地头顿省富美市新福坊）</p>
+                    <p><strong>电话：</strong> (84-254) 3933 595 | (84-254) 3933 600</p>
+                    <p><strong>网站：</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                </div>
+            </div>
+
+            <!-- Korean Content -->
+            <div class="lang-content" data-lang="ko" style="display:none;">
+                <h2>응우옌 코아에게 문의하기</h2>
+                <p>철강 솔루션, 정밀 가공 서비스, OEM/ODM 또는 기타 비즈니스 문의 사항에 대해 논의하려면 저에게 직접 연락하십시오:</p>
+
+                <div class="contact-info">
+                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="응우옌 코아 Profile" class="profile-image">
+                    <h3>응우옌 코아</h3>
+                    <p><strong>직책:</strong> 사업 개발 부사장</p>
+                    <p><strong>이메일:</strong> <a href="mailto:khoa.nguyen@smc.vn">khoa.nguyen@smc.vn</a></p>
+                    <p><strong>휴대폰:</strong> +84 917373606</p>
+                    <p><strong>Zalo/Viber/Whatsapp/Kakaotalk/Line:</strong> +84 917373606</p>
+                    <p><strong>WeChat:</strong> kh04nguyen</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nndk91" target="_blank">linkedin.com/in/nndk91</a></p>
+                    <p><strong>블로그:</strong> <a href="https://nguyenngocdangkhoa.com" target="_blank">nguyenngocdangkhoa.com</a></p>
+                </div>
+
+                <h2>회사 연락처 정보</h2>
+                <div class="contact-info">
+                    <h3>SMC 푸미 정밀 유한회사</h3>
+                    <p><strong>주소:</strong> 호치민시 푸미 워드 푸미 II 산업 단지 N7 도로 (구 바리아 붕따우 성 푸미 타운 탄푹 워드)</p>
+                    <p><strong>전화:</strong> (+84-254) 3933 866 | (+84-254) 3933 869</p>
+                    <p><strong>웹사이트:</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                </div>
+
+                <div class="contact-info">
+                    <h3>SMC 푸미 코일 센터</h3>
+                    <p><strong>주소:</strong> 호치민시 푸미 워드 푸미 II 산업 단지 N7 도로 (구 바리아 붕따우 성 푸미 타운 탄푹 워드)</p>
+                    <p><strong>전화:</strong> (84-254) 3933 595 | (84-254) 3933 600</p>
+                    <p><strong>웹사이트:</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                </div>
+            </div>
+
+            <!-- Japanese Content -->
+            <div class="lang-content" data-lang="ja" style="display:none;">
+                <h2>グエン・コアへのお問い合わせ</h2>
+                <p>鋼材ソリューション、精密加工サービス、OEM/ODM、またはその他ビジネスに関するお問い合わせは、直接私までご連絡ください。</p>
+
+                <div class="contact-info">
+                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="グエン・コア Profile" class="profile-image">
+                    <h3>グエン・コア</h3>
+                    <p><strong>役職:</strong> 事業開発担当副社長</p>
+                    <p><strong>メール:</strong> <a href="mailto:khoa.nguyen@smc.vn">khoa.nguyen@smc.vn</a></p>
+                    <p><strong>携帯電話:</strong> +84 917373606</p>
+                    <p><strong>Zalo/Viber/Whatsapp/Kakaotalk/Line:</strong> +84 917373606</p>
+                    <p><strong>WeChat:</strong> kh04nguyen</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nndk91" target="_blank">linkedin.com/in/nndk91</a></p>
+                    <p><strong>ブログ:</strong> <a href="https://nguyenngocdangkhoa.com" target="_blank">nguyenngocdangkhoa.com</a></p>
+                </div>
+
+                <h2>会社連絡先情報</h2>
+                <div class="contact-info">
+                    <h3>SMCフーミープレシジョン株式会社</h3>
+                    <p><strong>住所:</strong> ホーチミン市フーミー区フーミーII工業団地N7通り（旧バリア・ブンタウ省フーミー町タンフック区）</p>
+                    <p><strong>電話:</strong> (+84-254) 3933 866 | (+84-254) 3933 869</p>
+                    <p><strong>ウェブサイト:</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                </div>
+
+                <div class="contact-info">
+                    <h3>SMCフーミーコイルセンター</h3>
+                    <p><strong>住所:</strong> ホーチミン市フーミー区フーミーII工業団地N7通り（旧バリア・ブンタ우省フーミー町タンフック区）</p>
+                    <p><strong>電話:</strong> (84-254) 3933 595 | (84-254) 3933 600</p>
+                    <p><strong>ウェブサイト:</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Khoa Nguyen. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Translations for titles and navigation links
+        const translations = {
+            'vi': {
+                'pageTitle': 'Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ',
+                'headerTitle': 'Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ',
+                'headerSubtitle': '', // Empty as requested
+                'home': 'Trang Chủ',
+                'about': 'Về Khoa Nguyen',
+                'precision': 'SMC Phu My Precision',
+                'coil_center': 'SMC Phu My Coil Center',
+                'contact': 'Liên Hệ'
+            },
+            'en': {
+                'pageTitle': 'Deputy Business Development Director at SMC Phu My',
+                'headerTitle': 'Deputy Business Development Director at SMC Phu My',
+                'headerSubtitle': '', // Empty as requested
+                'home': 'Home',
+                'about': 'About Khoa Nguyen',
+                'precision': 'SMC Phu My Precision',
+                'coil_center': 'SMC Phu My Coil Center',
+                'contact': 'Contact'
+            },
+            'zh': {
+                'pageTitle': 'SMC富美业务发展副总裁',
+                'headerTitle': 'SMC富美业务发展副总裁',
+                'headerSubtitle': '', // Empty as requested
+                'home': '主页',
+                'about': '关于阮科',
+                'precision': 'SMC富美精密',
+                'coil_center': 'SMC富美钢卷中心',
+                'contact': '联系我们'
+            },
+            'ko': {
+                'pageTitle': 'SMC 푸미 사업 개발 부사장',
+                'headerTitle': 'SMC 푸미 사업 개발 부사장',
+                'headerSubtitle': '', // Empty as requested
+                'home': '홈',
+                'about': '응우옌 코아 소개',
+                'precision': 'SMC 푸미 정밀',
+                'coil_center': 'SMC 푸미 코일 센터',
+                'contact': '문의하기'
+            },
+            'ja': {
+                'pageTitle': 'SMCフーミー事業開発担当副社長',
+                'headerTitle': 'SMCフーミー事業開発担当副社長',
+                'headerSubtitle': '', // Empty as requested
+                'home': 'ホーム',
+                'about': 'グエン・コアについて',
+                'precision': 'SMCフーミープレシジョン',
+                'coil_center': 'SMCフーミーコイルセンター',
+                'contact': 'お問い合わせ'
+            }
+        };
+
+        // JavaScript for language switching
+        function setLanguage(lang) {
+            localStorage.setItem('preferredLang', lang); // Save preferred language
+
+            // Update main content visibility
+            document.querySelectorAll('.lang-content').forEach(content => {
+                if (content.getAttribute('data-lang') === lang) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+
+            // Update active button state
+            document.querySelectorAll('.lang-selector button').forEach(button => {
+                if (button.onclick.toString().includes(`setLanguage('${lang}')`)) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+
+            // Update page title
+            document.getElementById('page-title').textContent = translations[lang].pageTitle;
+
+            // Update header titles and subtitles
+            document.getElementById('header-title').textContent = translations[lang].headerTitle;
+            document.getElementById('header-subtitle').textContent = translations[lang].headerSubtitle;
+
+
+            // Update navigation links
+            document.querySelectorAll('nav a').forEach(link => {
+                const key = link.getAttribute('data-nav-key');
+                if (translations[lang][key]) {
+                    link.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // On page load, set language from localStorage or default to Vietnamese
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'vi';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
