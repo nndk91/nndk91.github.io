@@ -38,9 +38,10 @@ header p {
     margin-top: 15px; /* Added margin-top to separate from text */
 }
 .lang-selector {
-    position: absolute;
-    top: 15px;
-    right: 20px;
+    position: absolute; /* Changed to absolute */
+    top: 15px; /* Adjust as needed */
+    right: 20px; /* Changed from left to right */
+    left: auto; /* Remove left property */
     display: flex;
     gap: 5px;
 }
@@ -267,8 +268,10 @@ footer {
         font-size: 1.3rem;
     }
     .lang-selector {
-        top: 10px;
-        right: 10px;
+        position: absolute; /* Keep it absolute for precise positioning */
+        top: 15px; /* Adjust as needed */
+        right: 15px; /* Move to the right */
+        left: auto; /* Remove left property */
         gap: 3px;
     }
     .lang-selector select {
@@ -316,9 +319,12 @@ footer {
         font-size: 1.2rem;
     }
     .lang-selector {
-        position: static;
-        justify-content: center;
-        margin-bottom: 10px;
+        position: absolute; /* Keep it absolute for precise positioning */
+        top: 10px; /* Adjust as needed */
+        right: 10px; /* Move to the right */
+        left: auto; /* Remove static and justify-content */
+        justify-content: flex-end; /* Align content to the end */
+        margin-bottom: 0; /* Remove margin-bottom */
     }
     .header-image {
         height: 400px;
