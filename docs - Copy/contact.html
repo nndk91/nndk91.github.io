@@ -13,37 +13,29 @@
             padding: 0;
             background-color: #f8f9fa;
             color: #343a40;
-            padding-top: 10px; /* Adjusted space for header image and nav */
         }
         header {
             background-color: #007bff;
             color: #ffffff;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            position: relative; /* Changed from fixed to relative */
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: background-color 0.3s ease;
+            position: relative;
         }
         header h1 {
             margin: 0;
             font-size: 2.5rem;
-            color: #ffffff; /* Ensure text is white on blue background */
         }
         header p {
             font-size: 1.1rem;
             margin-top: 5px;
-            color: #ffffff; /* Ensure text is white on blue background */
         }
          .header-image {
             width: 100%;
-            height: 400px; /* Adjusted fixed height for consistency */
+            height: 250px; /* Fixed height for consistency */
             object-fit: cover; /* Cover the area, cropping if necessary */
             display: block;
-            margin-top: 15px; /* Added margin-top to separate from text */
+            margin-bottom: 15px;
         }
         .lang-selector {
             position: absolute;
@@ -52,7 +44,7 @@
             display: flex;
             gap: 5px;
         }
-        .lang-selector select {
+        .lang-selector button {
             background-color: #0056b3;
             color: white;
             border: none;
@@ -61,17 +53,13 @@
             cursor: pointer;
             font-weight: bold;
             transition: background-color 0.3s ease;
-            appearance: none; /* Remove default dropdown arrow */
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2C197.915l-131.6%2C131.6c-4.9%2C4.9-12.8%2C4.9-17.7%2C0L5.4%2C197.915c-4.9-4.9-4.9-12.8%2C0-17.7l14.1-14.1c4.9-4.9%2C12.8-4.9%2C17.7%2C0l100.7%2C100.7c2.4%2C2.4%2C6.2%2C2.4%2C8.6%2C0l100.7-100.7c4.9-4.9%2C12.8-4.9%2C17.7%2C0l14.1%2C14.1C291.9%2C185.115%2C291.9%2C193.015%2C287%2C197.915z%22%2F%3E%3C%2Fsvg%3E');
-            background-repeat: no-repeat;
-            background-position: right 8px center;
-            background-size: 12px;
-            padding-right: 30px; /* Make space for the custom arrow */
         }
-        .lang-selector select:hover {
+        .lang-selector button:hover {
             background-color: #004085;
+        }
+        .lang-selector button.active {
+            background-color: #004085;
+            border: 1px solid #ffffff;
         }
         nav {
             background-color: #0056b3;
@@ -103,13 +91,6 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            opacity: 0; /* Initial state for fade-in */
-            transform: translateY(20px); /* Initial state for fade-in */
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        section.fade-in {
-            opacity: 1;
-            transform: translateY(0);
         }
         h1, h2, h3 {
             color: #007bff;
@@ -178,71 +159,11 @@
             border-radius: 10px 10px 0 0;
         }
 
-        /* Hamburger menu for mobile */
-        .hamburger-menu {
-            display: none; /* Hidden by default on desktop */
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 25px;
-            cursor: pointer;
-            position: absolute;
-            top: 25px;
-            left: 20px;
-            z-index: 1001;
-        }
-        .hamburger-menu span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: white;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .hamburger-menu.open span:nth-child(1) {
-            transform: translateY(11px) rotate(45deg);
-        }
-        .hamburger-menu.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger-menu.open span:nth-child(3) {
-            transform: translateY(-11px) rotate(-45deg);
-        }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            body {
-                padding-top: 10px; /* Adjusted for smaller sticky header */
-            }
-            header {
-                padding: 1rem 0;
-            }
-            nav {
-                display: none; /* Hide desktop nav */
-                flex-direction: column;
-                background-color: #0056b3;
-                position: absolute;
-                top: 100%; /* Position below header */
-                left: 0;
-                width: 100%;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
-                max-height: 0; /* Collapsed state */
-            }
-            nav.open {
-                max-height: 300px; /* Expanded state (adjust as needed) */
-            }
             nav a {
-                padding: 0.75rem 1.25rem;
-                border-bottom: 1px solid #004085;
-                text-align: left;
-            }
-            nav a:last-child {
-                border-bottom: none;
-            }
-            .hamburger-menu {
-                display: flex; /* Show hamburger on mobile */
+                padding: 0.75rem 0.8rem;
+                font-size: 0.9rem;
             }
             .container {
                 width: 95%;
@@ -268,12 +189,9 @@
                 right: 10px;
                 gap: 3px;
             }
-            .lang-selector select {
+            .lang-selector button {
                 padding: 6px 10px;
                 font-size: 0.8rem;
-            }
-            .header-image {
-                height: 400px;
             }
             .profile-image {
                 width: 120px;
@@ -282,17 +200,14 @@
         }
 
         @media (max-width: 480px) {
-            body {
-                padding-top: 440px; /* Further adjust for smaller screens */
+            nav a {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                border-bottom: 1px solid #002c5f;
             }
-            header {
-                padding: 0.8rem 0;
-            }
-            .hamburger-menu {
-                top: 18px;
-            }
-            nav.open {
-                max-height: 250px; /* Adjust for smaller screens */
+            nav a:last-child {
+                border-bottom: none;
             }
             .container {
                 width: 100%;
@@ -320,9 +235,6 @@
                 justify-content: center;
                 margin-bottom: 10px;
             }
-            .header-image {
-                height: 400px;
-            }
             .profile-image {
                 width: 100px;
                 height: 100px;
@@ -332,26 +244,19 @@
 </head>
 <body>
     <header>
-        <!-- Removed h1 id="header-title" -->
+        <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='NMP_0156.jpg'" alt="SMC Phu My Facility" class="header-image">
+        <h1 id="header-title">Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ</h1>
         <p id="header-subtitle"></p>
-        <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1200x400/007bff/ffffff?text=SMC+Phu+My+Facility'" alt="SMC Phu My Facility" class="header-image">
         <div class="lang-selector">
-            <select id="language-select">
-                <option value="vi">VI</option>
-                <option value="en">EN</option>
-                <option value="zh">ZH</option>
-                <option value="ko">KO</option>
-                <option value="ja">JA</option>
-            </select>
-        </div>
-        <div class="hamburger-menu" id="hamburger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <button onclick="setLanguage('vi')" class="active">VI</button>
+            <button onclick="setLanguage('en')">EN</button>
+            <button onclick="setLanguage('zh')">ZH</button>
+            <button onclick="setLanguage('ko')">KO</button>
+            <button onclick="setLanguage('ja')">JA</button>
         </div>
     </header>
 
-    <nav id="main-nav">
+    <nav>
         <a href="index.html" data-nav-key="home">Trang Chủ</a>
         <a href="about.html" data-nav-key="about">Về Khoa Nguyen</a>
         <a href="precision.html" data-nav-key="precision">SMC Phu My Precision</a>
@@ -367,7 +272,7 @@
                 <p>Để thảo luận về các giải pháp thép, dịch vụ gia công chính xác, OEM/ODM, hoặc bất kỳ yêu cầu kinh doanh nào, vui lòng liên hệ trực tiếp với tôi:</p>
 
                 <div class="contact-info">
-                    <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/007bff/ffffff?text=Profile'" alt="Khoa D. Nguyễn Profile" class="profile-image">
+                    <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="Khoa D. Nguyễn Profile" class="profile-image">
                     <h3>Khoa D. Nguyễn</h3>
                     <p><strong>Chức vụ:</strong> Phó Giám Đốc Phát Triển Kinh Doanh</p>
                     <p><strong>Email:</strong> <a href="mailto:khoa.nguyen@smc.vn">khoa.nguyen@smc.vn</a></p>
@@ -399,7 +304,7 @@
                 <p>To discuss steel solutions, precision machining services, OEM/ODM, or any business inquiries, please contact me directly:</p>
 
                 <div class="contact-info">
-                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='https://placehold.co/150x150/007bff/ffffff?text=Profile'" alt="Khoa D. Nguyen Profile" class="profile-image">
+                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="Khoa D. Nguyen Profile" class="profile-image">
                     <h3>Khoa D. Nguyen</h3>
                     <p><strong>Title:</strong> Deputy Business Development Director</p>
                     <p><strong>Email:</strong> <a href="mailto:khoa.nguyen@smc.vn">khoa.nguyen@smc.vn</a></p>
@@ -407,6 +312,7 @@
                     <p><strong>Zalo/Viber/Whatsapp/Kakaotalk/Line:</strong> +84 917373606</p>
                     <p><strong>WeChat:</strong> kh04nguyen</p>
                     <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nndk91" target="_blank">linkedin.com/in/nndk91</a></p>
+                  
                 </div>
 
                 <h2>Company Contact Information</h2>
@@ -431,7 +337,7 @@
                 <p>如需讨论钢铁解决方案、精密加工服务、OEM/ODM或任何业务咨询，请直接与我联系：</p>
 
                 <div class="contact-info">
-                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='https://placehold.co/150x150/007bff/ffffff?text=Profile'" alt="阮科 Profile" class="profile-image">
+                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="阮科 Profile" class="profile-image">
                     <h3>阮科</h3>
                     <p><strong>职位：</strong> 业务发展副总裁</p>
                     <p><strong>电子邮件：</strong> <a href="mailto:khoa.nguyen@smc.vn">khoa.nguyen@smc.vn</a></p>
@@ -439,6 +345,7 @@
                     <p><strong>Zalo/Viber/Whatsapp/Kakaotalk/Line:</strong> +84 917373606</p>
                     <p><strong>WeChat:</strong> kh04nguyen</p>
                     <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nndk91" target="_blank">linkedin.com/in/nndk91</a></p>
+                    
                 </div>
 
                 <h2>公司联系方式</h2>
@@ -446,7 +353,7 @@
                     <h3>SMC富美精密有限公司</h3>
                     <p><strong>地址：</strong> 胡志明市富美坊富美二工业区N7路（原巴地头顿省富美市新福坊）</p>
                     <p><strong>电话：</strong> (+84-254) 3933 866 | (+84-254) 3933 869</p>
-                    <p><strong>网站：：</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
+                    <p><strong>网站：</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
                 </div>
 
                 <div class="contact-info">
@@ -463,7 +370,7 @@
                 <p>철강 솔루션, 정밀 가공 서비스, OEM/ODM 또는 기타 비즈니스 문의 사항에 대해 논의하려면 저에게 직접 연락하십시오:</p>
 
                 <div class="contact-info">
-                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='https://placehold.co/150x150/007bff/ffffff?text=Profile'" alt="응우옌 코아 Profile" class="profile-image">
+                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="응우옌 코아 Profile" class="profile-image">
                     <h3>응우옌 코아</h3>
                     <p><strong>직책:</strong> 사업 개발 부사장</p>
                     <p><strong>이메일:</strong> <a href="mailto:khoa.nguyen@smc.vn">khoa.nguyen@smc.vn</a></p>
@@ -471,6 +378,7 @@
                     <p><strong>Zalo/Viber/Whatsapp/Kakaotalk/Line:</strong> +84 917373606</p>
                     <p><strong>WeChat:</strong> kh04nguyen</p>
                     <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nndk91" target="_blank">linkedin.com/in/nndk91</a></p>
+                  
                 </div>
 
                 <h2>회사 연락처 정보</h2>
@@ -495,7 +403,7 @@
                 <p>鋼材ソリューション、精密加工サービス、OEM/ODM、またはその他ビジネスに関するお問い合わせは、直接私までご連絡ください。</p>
 
                 <div class="contact-info">
-                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='https://placehold.co/150x150/007bff/ffffff?text=Profile'" alt="グエン・コア Profile" class="profile-image">
+                    <img src="img/1738505432319.jpeg"  onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="グエン・コア Profile" class="profile-image">
                     <h3>グエン・コア</h3>
                     <p><strong>役職:</strong> 事業開発担当副社長</p>
                     <p><strong>メール:</strong> <a href="mailto:khoa.nguyen@smc.vn">khoa.nguyen@smc.vn</a></p>
@@ -503,6 +411,7 @@
                     <p><strong>Zalo/Viber/Whatsapp/Kakaotalk/Line:</strong> +84 917373606</p>
                     <p><strong>WeChat:</strong> kh04nguyen</p>
                     <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nndk91" target="_blank">linkedin.com/in/nndk91</a></p>
+                   
                 </div>
 
                 <h2>会社連絡先情報</h2>
@@ -515,7 +424,7 @@
 
                 <div class="contact-info">
                     <h3>SMCフーミーコイルセンター</h3>
-                    <p><strong>住所:</strong> ホーチミン市フーミー区フーミーII工業団地N7通り（旧バリア・ブンタウ省フーミー町タンフック区）</p>
+                    <p><strong>住所:</strong> ホーチミン市フーミー区フーミーII工業団地N7通り（旧バリア・ブンタ우省フーミー町タンフック区）</p>
                     <p><strong>電話:</strong> (84-254) 3933 595 | (84-254) 3933 600</p>
                     <p><strong>ウェブサイト:</strong> <a href="https://smc.vn" target="_blank">www.smc.vn</a></p>
                 </div>
@@ -595,13 +504,20 @@
                 }
             });
 
-            // Update the selected option in the dropdown
-            document.getElementById('language-select').value = lang;
+            // Update active button state
+            document.querySelectorAll('.lang-selector button').forEach(button => {
+                if (button.onclick.toString().includes(`setLanguage('${lang}')`)) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
 
             // Update page title
             document.getElementById('page-title').textContent = translations[lang].pageTitle;
 
-            // Update header titles and subtitles (headerTitle is removed, so only headerSubtitle remains)
+            // Update header titles and subtitles
+            document.getElementById('header-title').textContent = translations[lang].headerTitle;
             document.getElementById('header-subtitle').textContent = translations[lang].headerSubtitle;
 
 
@@ -614,41 +530,10 @@
             });
         }
 
-        // Intersection Observer for fade-in animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target); // Stop observing once animated
-                }
-            });
-        }, {
-            threshold: 0.1 // Trigger when 10% of the item is visible
-        });
-
-        // Hamburger menu toggle
+        // On page load, set language from localStorage or default to Vietnamese
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferredLang') || 'vi';
             setLanguage(savedLang);
-
-            // Add event listener for the dropdown change
-            document.getElementById('language-select').addEventListener('change', (event) => {
-                setLanguage(event.target.value);
-            });
-
-            // Observe all sections for fade-in animation
-            document.querySelectorAll('section').forEach(section => {
-                observer.observe(section);
-            });
-
-            // Hamburger menu functionality
-            const hamburger = document.getElementById('hamburger-menu');
-            const nav = document.getElementById('main-nav');
-
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('open');
-                nav.classList.toggle('open');
-            });
         });
     </script>
 </body>

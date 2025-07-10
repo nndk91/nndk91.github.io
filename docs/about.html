@@ -13,29 +13,37 @@
             padding: 0;
             background-color: #f8f9fa;
             color: #343a40;
+            padding-top: 10px; /* Adjusted space for header image and nav */
         }
         header {
             background-color: #007bff;
             color: #ffffff;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            position: relative;
+            position: relative; /* Changed from fixed to relative */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
         }
         header h1 {
             margin: 0;
             font-size: 2.5rem;
+            color: #ffffff; /* Ensure text is white on blue background */
         }
         header p {
             font-size: 1.1rem;
             margin-top: 5px;
+            color: #ffffff; /* Ensure text is white on blue background */
         }
          .header-image {
             width: 100%;
-            height: 250px; /* Fixed height for consistency */
+            height: 400px; /* Adjusted fixed height for consistency */
             object-fit: cover; /* Cover the area, cropping if necessary */
             display: block;
-            margin-bottom: 15px;
+            margin-top: 15px; /* Added margin-top to separate from text */
         }
         .lang-selector {
             position: absolute;
@@ -44,7 +52,7 @@
             display: flex;
             gap: 5px;
         }
-        .lang-selector button {
+        .lang-selector select {
             background-color: #0056b3;
             color: white;
             border: none;
@@ -53,13 +61,17 @@
             cursor: pointer;
             font-weight: bold;
             transition: background-color 0.3s ease;
+            appearance: none; /* Remove default dropdown arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2C197.915l-131.6%2C131.6c-4.9%2C4.9-12.8%2C4.9-17.7%2C0L5.4%2C197.915c-4.9-4.9-4.9-12.8%2C0-17.7l14.1-14.1c4.9-4.9%2C12.8-4.9%2C17.7%2C0l100.7%2C100.7c2.4%2C2.4%2C6.2%2C2.4%2C8.6%2C0l100.7-100.7c4.9-4.9%2C12.8-4.9%2C17.7%2C0l14.1%2C14.1C291.9%2C185.115%2C291.9%2C193.015%2C287%2C197.915z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 12px;
+            padding-right: 30px; /* Make space for the custom arrow */
         }
-        .lang-selector button:hover {
+        .lang-selector select:hover {
             background-color: #004085;
-        }
-        .lang-selector button.active {
-            background-color: #004085;
-            border: 1px solid #ffffff;
         }
         nav {
             background-color: #0056b3;
@@ -91,6 +103,13 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0; /* Initial state for fade-in */
+            transform: translateY(20px); /* Initial state for fade-in */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
         }
         h1, h2, h3 {
             color: #007bff;
@@ -185,11 +204,105 @@
             border: 3px solid #007bff; /* Blue border */
         }
 
+        /* Custom styles for experience section */
+        .experience-entry {
+            margin-bottom: 20px; /* Spacing between each experience block */
+        }
+        .experience-entry p {
+            margin: 0; /* Reset default paragraph margins */
+            padding: 0;
+        }
+        .experience-entry .time-period {
+            margin-bottom: 2px; /* Reduced spacing */
+        }
+        .experience-entry .company-name {
+            font-size: 1.8rem; /* Larger font size for company name */
+            margin-top: 2px; /* Reduced spacing */
+            margin-bottom: 2px; /* Reduced spacing */
+        }
+        .experience-entry .company-location {
+            margin-bottom: 2px; /* Reduced spacing */
+        }
+        .experience-entry .position-title {
+            margin-bottom: 5px; /* Reduced spacing */
+        }
+        .experience-entry .job-details {
+            margin-top: 0;
+            margin-left: 20px;
+        }
+        .experience-entry .job-details li {
+            margin-bottom: 5px;
+            padding-left: 0; /* Remove default list item padding */
+        }
+        .experience-entry .job-details li::before {
+            content: none; /* Remove bullet points */
+        }
+
+        /* Hamburger menu for mobile */
+        .hamburger-menu {
+            display: none; /* Hidden by default on desktop */
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            z-index: 1001;
+        }
+        .hamburger-menu span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .hamburger-menu.open span:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
+        .hamburger-menu.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-menu.open span:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
+            body {
+                padding-top: 10px; /* Adjusted for smaller sticky header */
+            }
+            header {
+                padding: 1rem 0;
+            }
+            nav {
+                display: none; /* Hide desktop nav */
+                flex-direction: column;
+                background-color: #0056b3;
+                position: absolute;
+                top: 100%; /* Position below header */
+                left: 0;
+                width: 100%;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                max-height: 0; /* Collapsed state */
+            }
+            nav.open {
+                max-height: 300px; /* Expanded state (adjust as needed) */
+            }
             nav a {
-                padding: 0.75rem 0.8rem;
-                font-size: 0.9rem;
+                padding: 0.75rem 1.25rem;
+                border-bottom: 1px solid #004085;
+                text-align: left;
+            }
+            nav a:last-child {
+                border-bottom: none;
+            }
+            .hamburger-menu {
+                display: flex; /* Show hamburger on mobile */
             }
             .container {
                 width: 95%;
@@ -215,12 +328,12 @@
                 right: 10px;
                 gap: 3px;
             }
-            .lang-selector button {
+            .lang-selector select {
                 padding: 6px 10px;
                 font-size: 0.8rem;
             }
-            .section-image {
-                height: 150px;
+            .header-image {
+                height: 400px;
             }
             .profile-image {
                 width: 120px;
@@ -229,14 +342,17 @@
         }
 
         @media (max-width: 480px) {
-            nav a {
-                display: block;
-                width: 100%;
-                box-sizing: border-box;
-                border-bottom: 1px solid #002c5f;
+            body {
+                padding-top: 440px; /* Further adjust for smaller screens */
             }
-            nav a:last-child {
-                border-bottom: none;
+            header {
+                padding: 0.8rem 0;
+            }
+            .hamburger-menu {
+                top: 18px;
+            }
+            nav.open {
+                max-height: 250px; /* Adjust for smaller screens */
             }
             .container {
                 width: 100%;
@@ -264,8 +380,8 @@
                 justify-content: center;
                 margin-bottom: 10px;
             }
-            .section-image {
-                height: 120px;
+            .header-image {
+                height: 400px;
             }
             .profile-image {
                 width: 100px;
@@ -279,19 +395,26 @@
 </head>
 <body>
     <header>
-        <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='NMP_0156.jpg'" alt="SMC Phu My Facility" class="header-image">
-        <h1 id="header-title">Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ</h1>
+        <!-- Removed h1 id="header-title" -->
         <p id="header-subtitle"></p>
+        <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1200x400/007bff/ffffff?text=SMC+Phu+My+Facility'" alt="SMC Phu My Facility" class="header-image">
         <div class="lang-selector">
-            <button onclick="setLanguage('vi')" class="active">VI</button>
-            <button onclick="setLanguage('en')">EN</button>
-            <button onclick="setLanguage('zh')">ZH</button>
-            <button onclick="setLanguage('ko')">KO</button>
-            <button onclick="setLanguage('ja')">JA</button>
+            <select id="language-select">
+                <option value="vi">VI</option>
+                <option value="en">EN</option>
+                <option value="zh">ZH</option>
+                <option value="ko">KO</option>
+                <option value="ja">JA</option>
+            </select>
+        </div>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </header>
 
-    <nav>
+    <nav id="main-nav">
         <a href="index.html" data-nav-key="home">Trang Chủ</a>
         <a href="about.html" data-nav-key="about">Về Khoa Nguyen</a>
         <a href="precision.html" data-nav-key="precision">SMC Phu My Precision</a>
@@ -304,9 +427,9 @@
             <!-- Vietnamese Content -->
             <div class="lang-content" data-lang="vi">
                 <h2>Về Khoa Nguyen</h2>
-                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="Khoa D. Nguyen Profile" class="profile-image">
+                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/007bff/ffffff?text=Profile'" alt="Khoa D. Nguyễn Profile" class="profile-image">
                 <h3>Tóm tắt</h3>
-                <p>Kinh doanh thép, từ thép đen đến thép màu, chuyên môn về chuỗi cung ứng thép.</p>
+                <p>Chuyên gia quản lý giàu kinh nghiệm và năng động trong ngành thép, chuyên về chuỗi cung ứng thép cán nóng, PO, mạ kẽm, mạ nhôm kẽm, thép màu, inox và các sản phẩm thép khác cho các lĩnh vực như điện, điện tử, nội thất và công nghiệp nói chung. Có thành tích xuất sắc trong chiến lược kinh doanh, quản lý dự án và lãnh đạo, được hỗ trợ bởi nền tảng IT vững chắc. Các thành tựu đáng chú ý bao gồm đồng sáng lập một liên doanh giữa một tập đoàn hàng đầu của Hàn Quốc và một công ty Việt Nam, đóng góp vào việc thành lập vendor dập Việt Nam đầu tiên tại địa phương của Samsung, và thúc đẩy các chiến lược giúp tăng doanh số nhà máy lên 20% đồng thời cắt giảm đến 50% lỗi sản phẩm.</p>
 
                 <div class="profile-section">
                     <div class="profile-column">
@@ -327,33 +450,74 @@
                 </div>
 
                 <h3>Kinh nghiệm</h3>
-                <h4>SMC Phu My Precision Co. Ltd</h4>
-                <p><strong>Giám đốc Phát triển Kinh doanh</strong><br>Tháng 6 năm 2025 - Hiện tại (2 tháng)<br>Phú Mỹ, Bà Rịa-Vũng Tàu, Việt Nam</p>
+                <div class="experience-entry">
+                    <p class="time-period">Tháng 6 năm 2025 - Hiện tại</p>
+                    <h4 class="company-name"><strong>SMC Phu My Precision Co. Ltd</strong></h4>
+                    <p class="company-location">Phú Mỹ, Bà Rịa-Vũng Tàu, Việt Nam</p>
+                    <p class="position-title"><strong>Phó Giám đốc Phát triển Kinh doanh</strong></p>
+                    <ul class="job-details">
+                        <li>Phát triển các nhà cung cấp vendor cấp 2 nội địa</li>
+                        <li>Phát triển khách hàng mới, mở rộng mảng kinh doanh từ điện lạnh qua các hệ khách hàng điện tử, IoT, automotive</li>
+                    </ul>
+                </div>
 
-                <h4>SMC Phu My Steel Processing Co.Ltd</h4>
-                <p><strong>Phó Giám đốc</strong><br>Tháng 1 năm 2025 - Tháng 6 năm 2025 (6 tháng)</p>
+                <div class="experience-entry">
+                    <p class="time-period">Tháng 1 năm 2025 - Tháng 6 năm 2025 (6 tháng)</p>
+                    <h4 class="company-name"><strong>SMC Phu My Steel Processing Co.Ltd</strong></h4>
+                    <p class="company-location">Phú Mỹ, Bà Rịa-Vũng Tàu, Việt Nam</p>
+                    <p class="position-title"><strong>Phó Giám đốc Phát triển Kinh doanh</strong></p>
+                    <ul class="job-details">
+                        <li>Phát triển mặt hàng mới, thép inox, thép sillic</li>
+                        <li>Phát triển nguồn hàng mới từ các nhà cung cấp Trung Quốc, Hàn Quốc, Nhật Bản</li>
+                        <li>Phát triển mảng kinh doanh mới, hỗ trợ nội địa hoá sản phẩm sử dụng thép có nguồn gốc từ Việt Nam hoặc không phải nguồn gốc Trung Quốc</li>
+                    </ul>
+                </div>
 
-                <h4>VSSC Steel Center LLC</h4>
-                <p><strong>Phó Giám đốc</strong><br>Tháng 3 năm 2021 - Tháng 1 năm 2025 (3 năm 11 tháng)</p>
+                <div class="experience-entry">
+                    <p class="time-period">Tháng 3 năm 2021 - Tháng 1 năm 2025 (3 năm 11 tháng)</p>
+                    <h4 class="company-name"><strong>VSSC Steel Center LLC</strong></h4>
+                    <p class="company-location">Phú Mỹ, Bà Rịa-Vũng Tàu, Việt Nam</p>
+                    <p class="position-title"><strong>Phó Giám đốc</strong></p>
+                    <ul class="job-details">
+                        <li>Quản lý khách hàng FDI Hàn Quốc lớn nhất về sản xuất tivi, tủ lạnh, máy giặt máy hút bụi tại miền Nam Việt Nam</li>
+                        <li>Quản lý về XNK về việc sản xuất xuất khẩu, quản lý báo cáo quyết toán</li>
+                        <li>Quản lý về Logistic, đảm bảo việc giao nhận hàng hoá và tìm kiếm nhà cung cấp dịch vụ với giá cả hợp lý và phải chăng</li>
+                        <li>Quản lý về HSE, an toàn, môi trường, PCCC</li>
+                        <li>Chịu trách nhiệm cho việc RnD, cải tiến của nhà máy để tăng năng suất, giảm thiểu lỗi phát sinh</li>
+                        <li>Phụ trách việc xin Quota Chống Bán Phá Giá để nhập khẩu thép từ Hàn Quốc về và cấp cho chuỗi cung ứng tại Việt Nam</li>
+                        <li>Phụ trách các vấn đề ngoại giao với các cơ quan nhà nước Việt Nam bao gồm Hải Quan, Ban Quản Lý KCN, Bộ Công Thương v.v</li>
+                    </ul>
+                </div>
 
-                <h4>SMC Steel Co. Ltd (Coil Center)</h4>
-                <p><strong>Trưởng phòng Bán hàng</strong><br>Tháng 8 năm 2019 - Tháng 2 năm 2021 (1 năm 7 tháng)</p>
-                <p><strong>Chuyên viên Bán hàng</strong><br>Tháng 1 năm 2018 - Tháng 8 năm 2019 (1 năm 8 tháng)<br>H. Tân Thành, Tỉnh Bà Rịa-Vũng Tàu, Việt Nam</p>
+                <div class="experience-entry">
+                    <p class="time-period">Tháng 1 năm 2018 - Tháng 2 năm 2021 (3 năm 1 tháng)</p>
+                    <h4 class="company-name"><strong>SMC Steel Co. Ltd (Coil Center)</strong></h4>
+                    <p class="company-location">H. Tân Thành, Tỉnh Bà Rịa-Vũng Tàu, Việt Nam</p>
+                    <p class="position-title"><strong>Trưởng phòng Kinh Doanh</strong>: Tháng 8/2019 -> Tháng 2/2021</p>
+                    <ul class="job-details">
+                        <li>Phụ trách gia công cho khách hàng FDI chuyên sản xuất tivi với sản lượng hơn 2,000MT/tháng tương đương 25% sản lượng nhà máy</li>
+                    </ul>
+                    <p class="position-title"><strong>Chuyên viên Bán hàng</strong>: Tháng 1/2018 - Tháng 8/2019</p>
+                    <ul class="job-details">
+                        <li>Phụ trách tìm kiếm khách hàng FDI mới cho hệ thống coil center của SMC</li>
+                    </ul>
+                </div>
 
-                <h4>SMC Trading Investment JSC</h4>
-                <p><strong>Phó Trưởng phòng</strong><br>Tháng 9 năm 2017 - Tháng 1 năm 2018 (5 tháng)<br>396 Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh</p>
-                <p><strong>Chuyên viên Bán hàng</strong><br>Tháng 8 năm 2014 - Tháng 9 năm 2017 (3 năm 2 tháng)<br>396 Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh</p>
-                <ul>
-                    <li>Cập nhật giá thép bao gồm Thép cuộn, HRC, HRS, HRP.</li>
-                    <li>Tìm kiếm thị trường, khách hàng và đối tác thương mại mới.</li>
-                </ul>
-
-                <h4>SENDO Joint Venture Co. Ltd</h4>
-                <p><strong>Chuyên viên Bán hàng Xuất khẩu</strong><br>Tháng 4 năm 2016 - Tháng 1 năm 2018 (1 năm 10 tháng)<br>Đường 1A, KCN Phú Mỹ 1, Huyện Tân Thành, Bà Rịa Vũng Tàu</p>
-                <ul>
-                    <li>Phụ trách kinh doanh xuất khẩu ống thép.</li>
-                </ul>
-
+                <div class="experience-entry">
+                    <p class="time-period">Tháng 8 năm 2014 - Tháng 1 năm 2018 (3 năm 5 tháng)</p>
+                    <h4 class="company-name"><strong>SMC Trading Investment JSC</strong></h4>
+                    <p class="company-location">396 Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh</p>
+                    <p class="position-title"><strong>Phó phòng P.XNK</strong>: Tháng 9/2017-> Tháng 1/2018 (5 tháng)</p>
+                    <ul class="job-details">
+                        <li>Chuyên kinh doanh xuất khẩu ống thép sang các thị trường như Thái, Campuchia, Châu Âu, Châu Úc. Sản lượng xuất khẩu chiếm đến 30-40% sản lượng nhà máy.</li>
+                    </ul>
+                    <p class="position-title"><strong>Chuyên viên P.XNK</strong>: Tháng 4/2014 ->Tháng 9/2017 (3 năm 2 tháng)</p>
+                    <ul class="job-details">
+                        <li>Phụ trách mua hàng nhập khẩu cho hệ thống SMC để kinh doanh bao gồm hàng mạ màu, hàng mạ kẽm, cán nóng, cán nguội v.v</li>
+                        <li>Mở rộng mảng kinh doanh mới là mảng xuất khẩu ống thép cho nhà máy liên doanh SENDO.</li>
+                    </ul>
+                </div>
+                
                 <hr>
 
                 <h3>Giáo dục</h3>
@@ -372,9 +536,9 @@
             <!-- English Content -->
             <div class="lang-content" data-lang="en" style="display:none;">
                 <h2>About Khoa Nguyen</h2>
-                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="Khoa D. Nguyen Profile" class="profile-image">
+                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/007bff/ffffff?text=Profile'" alt="Khoa D. Nguyen Profile" class="profile-image">
                 <h3>Summary</h3>
-                <p>Steel sales, from ferrous to non-ferrous, steel supply chain expertise.</p>
+                <p>Experienced and dynamic management professional in the steel industry, specializing in the supply chain of hot-rolled steel, PO, galvanized, galvalume, pre-painted steel, stainless steel, and other steel products for sectors such as electrical, electronics, furniture, and general industry. Proven track record in business strategy, project management, and leadership, supported by a strong IT background. Notable achievements include co-founding a joint venture between a leading Korean chaebol and a Vietnamese company, contributing to the establishment of Samsung’s first fully local press vendor, and driving strategies that increased factory sales by 20% while reducing product defects by 50%.</p>
 
                 <div class="profile-section">
                     <div class="profile-column">
@@ -395,33 +559,74 @@
                 </div>
 
                 <h3>Experience</h3>
-                <h4>SMC Phu My Precision Co. Ltd</h4>
-                <p><strong>Director of Business Development</strong><br>June 2025 - Present (2 months)<br>Phú Mỹ, Ba Ria-Vung Tau, Vietnam</p>
+                <div class="experience-entry">
+                    <p class="time-period">June 2025 - Present</p>
+                    <h4 class="company-name"><strong>SMC Phu My Precision Co. Ltd</strong></h4>
+                    <p class="company-location">Phú Mỹ, Ba Ria-Vung Tau, Vietnam</p>
+                    <p class="position-title"><strong>Deputy Business Development Director</strong></p>
+                    <ul class="job-details">
+                        <li>Develop local tier-2 vendors</li>
+                        <li>Develop new customers, expand business from refrigeration to electronics, IoT, automotive customer segments</li>
+                    </ul>
+                </div>
 
-                <h4>SMC Phu My Steel Processing Co.Ltd</h4>
-                <p><strong>Deputy Director</strong><br>January 2025 - June 2025 (6 months)</p>
+                <div class="experience-entry">
+                    <p class="time-period">January 2025 - June 2025 (6 months)</p>
+                    <h4 class="company-name"><strong>SMC Phu My Steel Processing Co.Ltd</strong></h4>
+                    <p class="company-location">Phú Mỹ, Ba Ria-Vung Tau, Vietnam</p>
+                    <p class="position-title"><strong>Deputy Business Development Director</strong></p>
+                    <ul class="job-details">
+                        <li>Develop new product lines: stainless steel, silicon steel</li>
+                        <li>Develop new sources of goods from Chinese, Korean, and Japanese suppliers</li>
+                        <li>Develop new business segments, support localization of steel products originating from Vietnam or non-Chinese sources</li>
+                    </ul>
+                </div>
 
-                <h4>VSSC Steel Center LLC</h4>
-                <p><strong>Vice President</strong><br>March 2021 - January 2025 (3 years 11 months)</p>
+                <div class="experience-entry">
+                    <p class="time-period">March 2021 - January 2025 (3 years 11 months)</p>
+                    <h4 class="company-name"><strong>VSSC Steel Center LLC</strong></h4>
+                    <p class="company-location">Phú Mỹ, Ba Ria-Vung Tau, Vietnam</p>
+                    <p class="position-title"><strong>Vice President</strong></p>
+                    <ul class="job-details">
+                        <li>Manage the largest Korean FDI client for TV, refrigerator, washing machine, and vacuum cleaner manufacturing in Southern Vietnam</li>
+                        <li>Manage import/export for production and export, manage settlement reports</li>
+                        <li>Manage Logistics, ensure goods delivery and receipt, and find service providers with reasonable and affordable prices</li>
+                        <li>Manage HSE, safety, environment, fire prevention and fighting</li>
+                        <li>Responsible for RnD and factory improvement to increase productivity and minimize errors</li>
+                        <li>Responsible for applying for Anti-Dumping Quota to import steel from Korea and supply to the supply chain in Vietnam</li>
+                        <li>Responsible for external relations with Vietnamese state agencies including Customs, Industrial Zone Management Board, Ministry of Industry and Trade, etc.</li>
+                    </ul>
+                </div>
 
-                <h4>SMC Steel Co. Ltd (Coil Center)</h4>
-                <p><strong>Sales Manager</strong><br>August 2019 - February 2021 (1 year 7 months)</p>
-                <p><strong>Sales Executive</strong><br>January 2018 - August 2019 (1 year 8 months)<br>H. Tân Thành, Tỉnh Bà Rịa-Vũng Tàu, Vietnam</p>
+                <div class="experience-entry">
+                    <p class="time-period">January 2018 - February 2021 (3 years 1 month)</p>
+                    <h4 class="company-name"><strong>SMC Steel Co. Ltd (Coil Center)</strong></h4>
+                    <p class="company-location">H. Tân Thành, Tỉnh Bà Rịa-Vũng Tàu, Vietnam</p>
+                    <p class="position-title"><strong>Sales Manager</strong>: August 2019 -> February 2021</p>
+                    <ul class="job-details">
+                        <li>Responsible for processing for FDI customers specializing in TV manufacturing with a volume of over 2,000MT/month, equivalent to 25% of factory output</li>
+                    </ul>
+                    <p class="position-title"><strong>Sales Executive</strong>: January 2018 - August 2019</p>
+                    <ul class="job-details">
+                        <li>Responsible for finding new FDI customers for SMC's coil center system</li>
+                    </ul>
+                </div>
 
-                <h4>SMC Trading Investment JSC</h4>
-                <p><strong>Deputy Manager</strong><br>September 2017 - January 2018 (5 months)<br>396 Ung Van Khiem St, Ward 25, Binh Thanh District, Ho Chi Minh City</p>
-                <p><strong>Sales Executive</strong><br>August 2014 - September 2017 (3 years 2 months)<br>396 Ung Van Khiem St, Ward 25, Binh Thanh District, Ho Chi Minh City</p>
-                <ul>
-                    <li>Update on Steel Trading Price include Wire Rod, HRC, HRS, HRP.</li>
-                    <li>Find new market, customer and trading partners.</li>
-                </ul>
-
-                <h4>SENDO Joint Venture Co. Ltd</h4>
-                <p><strong>Export Sales Executive</strong><br>April 2016 - January 2018 (1 year 10 months)<br>1A street, Phu My 1 IZ, Tan Thanh Dist., Ba Ria Vung Tau</p>
-                <ul>
-                    <li>In charge of exporting pipe business.</li>
-                </ul>
-
+                <div class="experience-entry">
+                    <p class="time-period">August 2014 - January 2018 (3 years 5 months)</p>
+                    <h4 class="company-name"><strong>SMC Trading Investment JSC</strong></h4>
+                    <p class="company-location">396 Ung Van Khiem St, Ward 25, Binh Thanh District, Ho Chi Minh City</p>
+                    <p class="position-title"><strong>Deputy Manager of Import/Export Dept.</strong>: September 2017-> January 2018 (5 months)</p>
+                    <ul class="job-details">
+                        <li>Specialized in exporting steel pipes to markets such as Thailand, Cambodia, Europe, Australia. Export volume accounted for 30-40% of factory output.</li>
+                    </ul>
+                    <p class="position-title"><strong>Import/Export Specialist</strong>: April 2014 -> September 2017 (3 years 2 months)</p>
+                    <ul class="job-details">
+                        <li>Responsible for purchasing imported goods for SMC system for business, including pre-painted steel, galvanized steel, hot-rolled, cold-rolled, etc.</li>
+                        <li>Expanded new business segment: steel pipe export for SENDO joint venture factory.</li>
+                    </ul>
+                </div>
+                
                 <hr>
 
                 <h3>Education</h3>
@@ -437,12 +642,11 @@
                 </ul>
             </div>
 
-            <!-- Chinese Content -->
             <div class="lang-content" data-lang="zh" style="display:none;">
                 <h2>关于阮科</h2>
-                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="阮科 Profile" class="profile-image">
+                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/007bff/ffffff?text=Profile'" alt="阮科 Profile" class="profile-image">
                 <h3>摘要</h3>
-                <p>钢铁销售，从黑色金属到有色金属，钢铁供应链专业知识。</p>
+                <p>钢铁业务，包括热轧钢、PO钢、镀锌钢、镀铝锌钢、彩钢、不锈钢等各类钢材。专注于电气、电子、家具、工业等行业钢材产品的供应链。在业务战略、项目管理和领导力方面拥有卓越的往绩，并拥有强大的IT背景。显著成就包括与韩国领先财阀共同创立合资企业，协助建立三星首家完全本地化的压制供应商，以及推动将工厂销售额提高20%同时将产品缺陷减少50%的战略。</p>
 
                 <div class="profile-section">
                     <div class="profile-column">
@@ -463,32 +667,73 @@
                 </div>
 
                 <h3>经验</h3>
-                <h4>SMC富美精密有限公司</h4>
-                <p><strong>业务发展总监</strong><br>2025年6月 - 至今 (2个月)<br>越南巴地头顿省富美</p>
+                <div class="experience-entry">
+                    <p class="time-period">2025年6月 - 至今</p>
+                    <h4 class="company-name"><strong>SMC富美精密有限公司</strong></h4>
+                    <p class="company-location">越南巴地头顿省富美</p>
+                    <p class="position-title"><strong>业务发展副总监</strong></p>
+                    <ul class="job-details">
+                        <li>开发本地二级供应商</li>
+                        <li>开发新客户，将业务从制冷领域扩展到电子、物联网、汽车等客户群体</li>
+                    </ul>
+                </div>
 
-                <h4>SMC富美钢铁加工有限公司</h4>
-                <p><strong>副总监</strong><br>2025年1月 - 2025年6月 (6个月)</p>
+                <div class="experience-entry">
+                    <p class="time-period">2025年1月 - 2025年6月 (6个月)</p>
+                    <h4 class="company-name"><strong>SMC富美钢铁加工有限公司</strong></h4>
+                    <p class="company-location">越南巴地头顿省富美</p>
+                    <p class="position-title"><strong>业务发展副总监</strong></p>
+                    <ul class="job-details">
+                        <li>开发新产品线：不锈钢、硅钢</li>
+                        <li>开发来自中国、韩国、日本供应商的新货源</li>
+                        <li>开发新业务板块，支持使用越南或非中国来源钢材产品的本地化</li>
+                    </ul>
+                </div>
 
-                <h4>VSSC钢铁中心有限公司</h4>
-                <p><strong>副总监</strong><br>2021年3月 - 2025年1月 (3年11个月)</p>
+                <div class="experience-entry">
+                    <p class="time-period">2021年3月 - 2025年1月 (3年11个月)</p>
+                    <h4 class="company-name"><strong>VSSC钢铁中心有限公司</strong></h4>
+                    <p class="company-location">越南巴地头顿省富美</p>
+                    <p class="position-title"><strong>副总监</strong></p>
+                    <ul class="job-details">
+                        <li>管理越南南部最大的韩国FDI客户，涉及电视、冰箱、洗衣机和吸尘器制造</li>
+                        <li>管理生产出口的进出口，管理结算报告</li>
+                        <li>管理物流，确保货物交付和接收，并寻找价格合理且实惠的服务提供商</li>
+                        <li>管理HSE，安全、环境，消防</li>
+                        <li>负责工厂的研发和改进，以提高生产力并最大程度地减少错误</li>
+                        <li>负责申请反倾销配额，从韩国进口钢材并供应给越南的供应链</li>
+                        <li>负责与越南国家机构（包括海关、工业区管理委员会、工贸部等）的外交事务</li>
+                    </ul>
+                </div>
 
-                <h4>SMC钢铁有限公司 (钢卷中心)</h4>
-                <p><strong>销售经理</strong><br>2019年8月 - 2021年2月 (1年7个月)</p>
-                <p><strong>销售主管</strong><br>2018年1月 - 2019年8月 (1年8个月)<br>越南巴地头顿省新城县</p>
+                <div class="experience-entry">
+                    <p class="time-period">2018年1月 - 2021年2月 (3年1个月)</p>
+                    <h4 class="company-name"><strong>SMC钢铁有限公司 (钢卷中心)</strong></h4>
+                    <p class="company-location">越南巴地头顿省新城县</p>
+                    <p class="position-title"><strong>销售经理</strong>: 2019年8月 -> 2021年2月</p>
+                    <ul class="job-details">
+                        <li>负责为专注于电视制造的FDI客户提供加工服务，月产量超过2,000吨，相当于工厂产量的25%</li>
+                    </ul>
+                    <p class="position-title"><strong>销售主管</strong>: 2018年1月 - 2019年8月</p>
+                    <ul class="job-details">
+                        <li>负责为SMC的钢卷中心系统寻找新的FDI客户</li>
+                    </ul>
+                </div>
 
-                <h4>SMC贸易投资股份公司</h4>
-                <p><strong>副经理</strong><br>2017年9月 - 2018年1月 (5个月)<br>胡志明市平盛区25坊翁文谦街396号</p>
-                <p><strong>销售主管</strong><br>2014年8月 - 2017年9月 (3年2个月)<br>胡志明市平盛区25坊翁文谦街396号</p>
-                <ul>
-                    <li>更新钢材贸易价格，包括盘条、热轧卷、热轧板、热轧带钢。</li>
-                    <li>寻找新市场、客户和贸易伙伴。</li>
-                </ul>
-
-                <h4>SENDO合资有限公司</h4>
-                <p><strong>出口销售主管</strong><br>2016年4月 - 2018年1月 (1年10个月)<br>巴地头顿省新城县富美1工业区1A街</p>
-                <ul>
-                    <li>负责出口管道业务。</li>
-                </ul>
+                <div class="experience-entry">
+                    <p class="time-period">2014年8月 - 2018年1月 (3年5个月)</p>
+                    <h4 class="company-name"><strong>SMC贸易投资股份公司</strong></h4>
+                    <p class="company-location">胡志明市平盛区25坊翁文谦街396号</p>
+                    <p class="position-title"><strong>进出口部副经理</strong>: 2017年9月 -> 2018年1月 (5个月)</p>
+                    <ul class="job-details">
+                        <li>专门从事钢管出口业务，出口到泰国、柬埔寨、欧洲、澳大利亚等市场。出口量占工厂产量的30-40%。</li>
+                    </ul>
+                    <p class="position-title"><strong>进出口专员</strong>: 2014年4月 -> 2017年9月 (3年2个月)</p>
+                    <ul class="job-details">
+                        <li>负责为SMC系统采购进口商品，包括彩涂钢、镀锌钢、热轧、冷轧等</li>
+                        <li>拓展新业务板块：SENDO合资工厂的钢管出口业务。</li>
+                    </ul>
+                </div>
 
                 <hr>
 
@@ -505,12 +750,11 @@
                 </ul>
             </div>
 
-            <!-- Korean Content -->
             <div class="lang-content" data-lang="ko" style="display:none;">
                 <h2>응우옌 코아 소개</h2>
-                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="응우옌 코아 Profile" class="profile-image">
+                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/007bff/ffffff?text=Profile'" alt="응우옌 코아 Profile" class="profile-image">
                 <h3>요약</h3>
-                <p>철금속부터 비철금속까지 철강 판매, 철강 공급망 전문 지식.</p>
+                <p>열연강판, PO, 아연 도금, 갈바륨, 컬러강판, 스테인리스강 등 다양한 종류의 철강 사업. 전기, 전자, 가구, 산업 등 다양한 산업 분야에서 철강 제품 공급망 전문화. 비즈니스 전략, 프로젝트 관리, 리더십 분야에서 입증된 실적을 보유하고 있으며, 강력한 IT 배경을 가지고 있습니다. 주요 성과로는 한국의 선도적인 재벌과 베트남 기업 간의 합작 투자 설립, 삼성의 첫 완전 현지 프레스 벤더 설립 기여, 공장 매출 20% 증가 및 제품 결함 50% 감소를 이끈 전략 추진 등이 있습니다。</p>
 
                 <div class="profile-section">
                     <div class="profile-column">
@@ -531,38 +775,79 @@
                 </div>
 
                 <h3>경험</h3>
-                <h4>SMC 푸미 정밀 유한회사</h4>
-                <p><strong>사업 개발 이사</strong><br>2025년 6월 - 현재 (2개월)<br>베트남 바리아붕따우성 푸미</p>
+                <div class="experience-entry">
+                    <p class="time-period">2025년 6월 - 현재</p>
+                    <h4 class="company-name"><strong>SMC 푸미 정밀 유한회사</strong></h4>
+                    <p class="company-location">베트남 바리아붕따우성 푸미</p>
+                    <p class="position-title"><strong>사업 개발 부사장</strong></p>
+                    <ul class="job-details">
+                        <li>국내 2차 벤더 개발</li>
+                        <li>신규 고객 개발, 냉매 분야에서 전자, IoT, 자동차 고객 부문으로 사업 확장</li>
+                    </ul>
+                </div>
 
-                <h4>SMC 푸미 철강 가공 유한회사</h4>
-                <p><strong>부사장</strong><br>2025년 1월 - 2025년 6월 (6개월)</p>
+                <div class="experience-entry">
+                    <p class="time-period">2025년 1월 - 2025년 6월 (6개월)</p>
+                    <h4 class="company-name"><strong>SMC 푸미 철강 가공 유한회사</strong></h4>
+                    <p class="company-location">베트남 바리아붕따우성 푸미</p>
+                    <p class="position-title"><strong>사업 개발 부사장</strong></p>
+                    <ul class="job-details">
+                        <li>신규 제품 라인 개발: 스테인리스강, 규소강</li>
+                        <li>중국, 한국, 일본 공급업체로부터 신규 상품 소스 개발</li>
+                        <li>新사업 부문 개발, 베트남 또는 비중국 원산지 철강 제품 현지화 지원</li>
+                    </ul>
+                </div>
 
-                <h4>VSSC 철강 센터 LLC</h4>
-                <p><strong>부사장</strong><br>2021년 3월 - 2025년 1월 (3년 11개월)</p>
+                <div class="experience-entry">
+                    <p class="time-period">2021년 3월 - 2025년 1월 (3년 11개월)</p>
+                    <h4 class="company-name"><strong>VSSC 철강 센터 LLC</strong></h4>
+                    <p class="company-location">베트남 바리아붕따우성 푸미</p>
+                    <p class="position-title"><strong>부사장</strong></p>
+                    <ul class="job-details">
+                        <li>베트남 남부에서 TV, 냉장고, 세탁기, 진공청소기를 생산하는 최대 규모의 한국 FDI 고객 관리</li>
+                        <li>생산 및 수출 관련 수출입 관리, 결산 보고서 관리</li>
+                        <li>물류 관리, 합리적이고 저렴한 가격으로 물품 배송 및 수령 보장 및 서비스 제공업체 발굴</li>
+                        <li>HSE, 안전, 환경, 소방 관리</li>
+                        <li>생산성 향상 및 오류 최소화를 위한 공장 R&D 및 개선 책임</li>
+                        <li>한국으로부터 철강 수입 및 베트남 공급망 공급을 위한 반덤핑 쿼터 신청 책임</li>
+                        <li>세관, 산업 단지 관리 위원회, 산업 통상부 등 베트남 정부 기관과의 대외 관계 책임</li>
+                    </ul>
+                </div>
 
-                <h4>SMC 철강 유한회사 (코일 센터)</h4>
-                <p><strong>영업 관리자</strong><br>2019년 8월 - 2021년 2월 (1년 7개월)</p>
-                <p><strong>영업 담당자</strong><br>2018년 1월 - 2019년 8월 (1년 8개월)<br>베트남 바리아붕따우성 탄탄현</p>
+                <div class="experience-entry">
+                    <p class="time-period">2018년 1월 - 2021年2月 (3년 1개월)</p>
+                    <h4 class="company-name"><strong>SMC 철강 유한회사 (코일 센터)</strong></h4>
+                    <p class="company-location">베트남 바리아붕따우성 탄탄현</p>
+                    <p class="position-title"><strong>영업 관리자</strong>: 2019년 8월 -> 2021년 2월</p>
+                    <ul class="job-details">
+                        <li>월 2,000톤 이상, 공장 생산량의 25%에 해당하는 TV 제조 전문 FDI 고객 가공 담당</li>
+                    </ul>
+                    <p class="position-title"><strong>영업 담당자</strong>: 2018년 1월 - 2019년 8월</p>
+                    <ul class="job-details">
+                        <li>SMC의 코일 센터 시스템을 위한 신규 FDI 고객 발굴 담당</li>
+                    </ul>
+                </div>
 
-                <h4>SMC 무역 투자 JSC</h4>
-                <p><strong>부관리자</strong><<br>2017년 9월 - 2018년 1월 (5개월)<br>호치민시 빈탄구 25동 웅반키엠 396번지</p>
-                <p><strong>영업 담당자</strong><br>2014년 8월 - 2017년 9월 (3년 2개월)<br>호치민시 빈탄구 25동 웅반키엠 396번지</p>
-                <ul>
-                    <li>철강 거래 가격 업데이트 (선재, HRC, HRS, HRP 포함).</li>
-                    <li>새로운 시장, 고객 및 무역 파트너 발굴.</li>
-                </ul>
-
-                <h4>SENDO 합작 유한회사</h4>
-                <p><strong>수출 영업 담당자</strong><br>2016년 4월 - 2018년 1월 (1년 10개월)<br>바리아붕따우성 탄탄현 푸미 1 산업 단지 1A 거리</p>
-                <ul>
-                    <li>파이프 사업 수출 담당.</li>
-                </ul>
+                <div class="experience-entry">
+                    <p class="time-period">2014년 8월 - 2018년 1월 (3년 5개월)</p>
+                    <h4 class="company-name"><strong>SMC 무역 투자 JSC</strong></h4>
+                    <p class="company-location">호치민시 빈탄구 25동 웅반키엠 396번지</p>
+                    <p class="position-title"><strong>수출입 부서 부관리자</strong>: 2017년 9월 -> 2018년 1월 (5개월)</p>
+                    <ul class="job-details">
+                        <li>태국, 柬埔寨, 유럽, 호주 등 시장으로의 강관 수출 전문. 수출량은 공장 생산량의 30-40%를 차지.</li>
+                    </ul>
+                    <p class="position-title"><strong>수출입 전문가</strong>: 2014년 4월 -> 2017년 9월 (3년 2개월)</p>
+                    <ul class="job-details">
+                        <li>컬러강판, 아연도금강판, 열연강판, 냉연강판 등 SMC 시스템의 수입 상품 구매 담당</li>
+                        <li>新사업 부문 확장: SENDO 합작 공장의 강관 수출 사업.</li>
+                    </ul>
+                </div>
 
                 <hr>
 
                 <h3>학력</h3>
                 <h4>시드니 공과대학교</h4>
-                <p><strong>IT 석사, 비즈니스 인텔리전스</strong> (2013-2014)</p>
+                <p><strong>IT 석사, 비즈니스 인텔리젠스</strong> (2013-2014)</p>
                 <p><strong>정보 기술 과학 학사, 기업 프로그래밍</strong> (2009-2012)</p>
 
                 <h3>자격증</h3>
@@ -573,12 +858,11 @@
                 </ul>
             </div>
 
-            <!-- Japanese Content -->
             <div class="lang-content" data-lang="ja" style="display:none;">
                 <h2>グエン・コアについて</h2>
-                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='1738505432319.jpeg'" alt="グエン・コア Profile" class="profile-image">
+                <img src="img/1738505432319.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/007bff/ffffff?text=Profile'" alt="グエン・コア Profile" class="profile-image">
                 <h3>概要</h3>
-                <p>鉄鋼販売、鉄鋼から非鉄鋼まで、鉄鋼サプライチェーンの専門知識。</p>
+                <p>熱延鋼板、PO鋼、亜鉛めっき鋼板、ガルバリウム鋼板、カラー鋼板、ステンレス鋼など、あらゆる種類の鋼材ビジネス。電気、電子、家具、産業など、様々な分野における鋼材製品のサプライチェーンに特化。ビジネス戦略、プロジェクト管理、リーダーシップにおいて実績があり、強力なITバックグラウンドを持っています。特筆すべき成果には、韓国の大手財閥とベトナム企業との合弁事業の共同設立、サムスン初の完全現地プレスベンダーの設立への貢献、工場売上を20%増加させつつ製品欠陥を50%削減する戦略の推進などが含まれます。</p>
 
                 <div class="profile-section">
                     <div class="profile-column">
@@ -599,39 +883,80 @@
                 </div>
 
                 <h3>職務経歴</h3>
-                <h4>SMCフーミープレシジョン株式会社</h4>
-                <p><strong>事業開発ディレクター</strong><br>2025年6月 - 現在 (2ヶ月)<br>ベトナム、バリア・ブンタウ省フーミー</p>
+                <div class="experience-entry">
+                    <p class="time-period">2025年6月 - 現在</p>
+                    <h4 class="company-name"><strong>SMCフーミープレシジョン株式会社</strong></h4>
+                    <p class="company-location">ベトナム、バリア・ブンタウ省フーミー</p>
+                    <p class="position-title"><strong>事業開発副ディレクター</strong></p>
+                    <ul class="job-details">
+                        <li>国内ティア2ベンダーの開発</li>
+                        <li>新規顧客の開拓、冷熱分野から電子、IoT、自動車分野の顧客層への事業拡大</li>
+                    </ul>
+                </div>
 
-                <h4>SMCフーミースチール加工株式会社</h4>
-                <p><strong>副ディレクター</strong><br>2025年1月 - 2025年6月 (6ヶ月)</p>
+                <div class="experience-entry">
+                    <p class="time-period">2025年1月 - 2025年6月 (6ヶ月)</p>
+                    <h4 class="company-name"><strong>SMCフーミースチール加工株式会社</strong></h4>
+                    <p class="company-location">ベトナム、バリア・ブンタウ省フーミー</p>
+                    <p class="position-title"><strong>事業開発副ディレクター</strong></p>
+                    <ul class="job-details">
+                        <li>新製品ラインの開発：ステンレス鋼、ケイ素鋼</li>
+                        <li>中国、韓国、日本サプライヤーからの新たな仕入れ先の開拓</li>
+                        <li>新事業分野の開拓、ベトナムまたは非中国由来の鋼材製品の現地化支援</li>
+                    </ul>
+                </div>
 
-                <h4>VSSCスチールセンターLLC</h4>
-                <p><strong>副ディレクター</strong><br>2021年3月 - 2025年1月 (3年11ヶ月)</p>
+                <div class="experience-entry">
+                    <p class="time-period">2021年3月 - 2025年1月 (3年11ヶ月)</p>
+                    <h4 class="company-name"><strong>VSSCスチールセンターLLC</strong></h4>
+                    <p class="company-location">ベトナム、バリア・ブンタウ省フーミー</p>
+                    <p class="position-title"><strong>副ディレクター</strong></p>
+                    <ul class="job-details">
+                        <li>ベトナム南部でテレビ、冷蔵庫、洗濯機、掃除機を製造する最大の韓国系FDI顧客管理</li>
+                        <li>生産・輸出に関する輸出入管理、決算報告管理</li>
+                        <li>物流管理、商品の配送・受領の確保、およびリーズナブルで手頃な価格のサービスプロバイダーの探索</li>
+                        <li>HSE、安全、環境、防火管理</li>
+                        <li>生産性向上とエラー最小化のための工場R&Dおよび改善責任</li>
+                        <li>韓国からの鋼材輸入およびベトナムのサプライチェーンへの供給のためのアンチダンピングクォータ申請責任</li>
+                        <li>税関、工業団地管理委員会、商工省など、ベトナム国家機関との対外関係責任</li>
+                    </ul>
+                </div>
 
-                <h4>SMCスチール株式会社 (コイルセンター)</h4>
-                <p><strong>営業部長</strong><br>2019年8月 - 2021年2月 (1年7ヶ月)</p>
-                <p><strong>営業担当</strong><br>2018年1月 - 2019年8月 (1年8ヶ月)<br>ベトナム、バリア・ブンタウ省タンタイン県</p>
+                <div class="experience-entry">
+                    <p class="time-period">2018年1月 - 2021年2月 (3年1ヶ月)</p>
+                    <h4 class="company-name"><strong>SMCスチール株式会社 (コイルセンター)</strong></h4>
+                    <p class="company-location">ベトナム、バリア・ブンタウ省タンタイン県</p>
+                    <p class="position-title"><strong>営業部長</strong>: 2019年8月 -> 2021年2月</p>
+                    <ul class="job-details">
+                        <li>テレビ製造専門のFDI顧客向け加工を担当し、月間2,000トン以上の生産量で、工場生産量の25%に相当</li>
+                    </ul>
+                    <p class="position-title"><strong>営業担当</strong>: 2018年1月 - 2019年8月</p>
+                    <ul class="job-details">
+                        <li>SMCのコイルセンターシステム向けに新規FDI顧客を探す担当</li>
+                    </ul>
+                </div>
 
-                <h4>SMCトレーディングインベストメントJSC</h4>
-                <p><strong>副部長</strong><br>2017年9月 - 2018年1月 (5ヶ月)<br>ホーチミン市ビンタイン区25区ウンヴァンキエム通り396番地</p>
-                <p><strong>営業担当</strong><br>2014年8月 - 2017年9月 (3年2ヶ月)<br>ホーチミン市ビンタイン区25区ウンヴァンキエム通り396番地</p>
-                <ul>
-                    <li>線材、HRC、HRS、HRPを含む鉄鋼取引価格の更新。</li>
-                    <li>新しい市場、顧客、貿易パートナーの開拓。</li>
-                </ul>
-
-                <h4>SENDO合弁会社</h4>
-                <p><strong>輸出営業担当</strong><br>2016年4月 - 2018年1月 (1年10ヶ月)<br>バリア・ブンタウ省タンタイン地区フーミー1工業団地1A通り</p>
-                <ul>
-                    <li>パイプ事業の輸出を担当。</li>
-                </ul>
+                <div class="experience-entry">
+                    <p class="time-period">2014年8月 - 2018年1月 (3年5ヶ月)</p>
+                    <h4 class="company-name"><strong>SMCトレーディングインベストメントJSC</strong></h4>
+                    <p class="company-location">ホーチミン市ビンタイン区25区ウンヴァンキエム通り396号</p>
+                    <p class="position-title"><strong>輸出入部副部長</strong>: 2017年9月 -> 2018年1月 (5ヶ月)</p>
+                    <ul class="job-details">
+                        <li>タイ、カンボジア、ヨーロッパ、オーストラリアなどの市場への鋼管輸出を専門。輸出量占工厂产量的30-40%。</li>
+                    </ul>
+                    <p class="position-title"><strong>輸出入スペシャリスト</strong>: 2014年4月 -> 2017年9月 (3年2ヶ月)</p>
+                    <ul class="job-details">
+                        <li>カラー鋼板、亜鉛めっき鋼板、熱延鋼板、冷延鋼板など、SMCシステム向けの輸入商品の購入を担当</li>
+                        <li>新しい事業分野の拡大：SENDO合弁工場の鋼管輸出事業。</li>
+                    </ul>
+                </div>
 
                 <hr>
 
                 <h3>学歴</h3>
                 <h4>シドニー工科大学</h4>
-                <p><strong>IT修士、ビジネスインテリジェンス</strong> (2013-2014)</p>
-                <p><strong>情報技術科学学士、エンタープライズプログラミング</strong> (2009-2012)</p>
+                <p><strong>情報技術修士、ビジネスインテリジェンス</strong> (2013-2014)</p>
+                <p><strong>情報技術科学学士、企業プログラミング</strong> (2009-2012)</p>
 
                 <h3>資格</h3>
                 <ul>
@@ -715,20 +1040,13 @@
                 }
             });
 
-            // Update active button state
-            document.querySelectorAll('.lang-selector button').forEach(button => {
-                if (button.onclick.toString().includes(`setLanguage('${lang}')`)) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-            });
+            // Update the selected option in the dropdown
+            document.getElementById('language-select').value = lang;
 
             // Update page title
             document.getElementById('page-title').textContent = translations[lang].pageTitle;
 
-            // Update header titles and subtitles
-            document.getElementById('header-title').textContent = translations[lang].headerTitle;
+            // Update header titles and subtitles (headerTitle is removed, so only headerSubtitle remains)
             document.getElementById('header-subtitle').textContent = translations[lang].headerSubtitle;
 
 
@@ -741,10 +1059,41 @@
             });
         }
 
-        // On page load, set language from localStorage or default to Vietnamese
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        });
+
+        // Hamburger menu toggle
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferredLang') || 'vi';
             setLanguage(savedLang);
+
+            // Add event listener for the dropdown change
+            document.getElementById('language-select').addEventListener('change', (event) => {
+                setLanguage(event.target.value);
+            });
+
+            // Observe all sections for fade-in animation
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Hamburger menu functionality
+            const hamburger = document.getElementById('hamburger-menu');
+            const nav = document.getElementById('main-nav');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                nav.classList.toggle('open');
+            });
         });
     </script>
 </body>

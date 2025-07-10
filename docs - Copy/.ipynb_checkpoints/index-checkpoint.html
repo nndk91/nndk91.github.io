@@ -13,37 +13,29 @@
             padding: 0;
             background-color: #f8f9fa; /* Nền sáng nhẹ */
             color: #343a40; /* Màu chữ tối */
-            padding-top: 10px; /* Adjusted space for header image and nav */
         }
         header {
             background-color: #007bff; /* Màu xanh dương chủ đạo */
             color: #ffffff;
-            padding: 1rem 0; /* Adjusted padding */
+            padding: 1.5rem 0;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Đổ bóng nhẹ */
-            position: relative; /* Changed from fixed to relative */
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000; /* Ensure header stays on top */
-            transition: background-color 0.3s ease;
+            position: relative; /* Để chứa bộ chọn ngôn ngữ */
         }
         header h1 {
             margin: 0;
             font-size: 2.5rem;
-            color: #ffffff; /* Ensure text is white on blue background */
         }
         header p {
             font-size: 1.1rem;
             margin-top: 5px;
-            color: #ffffff; /* Ensure text is white on blue background */
         }
         .header-image {
             width: 100%;
-            height: 400px; /* Adjusted fixed height for consistency */
+            height: 250px; /* Fixed height for consistency */
             object-fit: cover; /* Cover the area, cropping if necessary */
             display: block;
-            margin-top: 15px; /* Added margin-top to separate from text */
+            margin-bottom: 15px;
         }
         .lang-selector {
             position: absolute;
@@ -52,7 +44,7 @@
             display: flex;
             gap: 5px;
         }
-        .lang-selector select {
+        .lang-selector button {
             background-color: #0056b3;
             color: white;
             border: none;
@@ -61,17 +53,13 @@
             cursor: pointer;
             font-weight: bold;
             transition: background-color 0.3s ease;
-            appearance: none; /* Remove default dropdown arrow */
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2C197.915l-131.6%2C131.6c-4.9%2C4.9-12.8%2C4.9-17.7%2C0L5.4%2C197.915c-4.9-4.9-4.9-12.8%2C0-17.7l14.1-14.1c4.9-4.9%2C12.8-4.9%2C17.7%2C0l100.7%2C100.7c2.4%2C2.4%2C6.2%2C2.4%2C8.6%2C0l100.7-100.7c4.9-4.9%2C12.8-4.9%2C17.7%2C0l14.1%2C14.1C291.9%2C185.115%2C291.9%2C193.015%2C287%2C197.915z%22%2F%3E%3C%2Fsvg%3E');
-            background-repeat: no-repeat;
-            background-position: right 8px center;
-            background-size: 12px;
-            padding-right: 30px; /* Make space for the custom arrow */
         }
-        .lang-selector select:hover {
+        .lang-selector button:hover {
             background-color: #004085;
+        }
+        .lang-selector button.active {
+            background-color: #004085;
+            border: 1px solid #ffffff;
         }
         nav {
             background-color: #0056b3; /* Màu xanh đậm hơn cho nav */
@@ -103,13 +91,6 @@
             padding: 30px;
             border-radius: 10px; /* Bo tròn góc nhiều hơn */
             box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Đổ bóng mạnh hơn */
-            opacity: 0; /* Initial state for fade-in */
-            transform: translateY(20px); /* Initial state for fade-in */
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        section.fade-in {
-            opacity: 1;
-            transform: translateY(0);
         }
         h1, h2, h3 {
             color: #007bff; /* Màu xanh dương cho tiêu đề */
@@ -187,71 +168,11 @@
             border-radius: 8px;
         }
 
-        /* Hamburger menu for mobile */
-        .hamburger-menu {
-            display: none; /* Hidden by default on desktop */
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 25px;
-            cursor: pointer;
-            position: absolute;
-            top: 25px;
-            left: 20px;
-            z-index: 1001;
-        }
-        .hamburger-menu span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: white;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .hamburger-menu.open span:nth-child(1) {
-            transform: translateY(11px) rotate(45deg);
-        }
-        .hamburger-menu.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger-menu.open span:nth-child(3) {
-            transform: translateY(-11px) rotate(-45deg);
-        }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            body {
-                padding-top: 10px; /* Adjusted for smaller header */
-            }
-            header {
-                padding: 1rem 0;
-            }
-            nav {
-                display: none; /* Hide desktop nav */
-                flex-direction: column;
-                background-color: #0056b3;
-                position: absolute;
-                top: 100%; /* Position below header */
-                left: 0;
-                width: 100%;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
-                max-height: 0; /* Collapsed state */
-            }
-            nav.open {
-                max-height: 300px; /* Expanded state (adjust as needed) */
-            }
             nav a {
-                padding: 0.75rem 1.25rem;
-                border-bottom: 1px solid #004085;
-                text-align: left;
-            }
-            nav a:last-child {
-                border-bottom: none;
-            }
-            .hamburger-menu {
-                display: flex; /* Show hamburger on mobile */
+                padding: 0.75rem 0.8rem;
+                font-size: 0.9rem;
             }
             .container {
                 width: 95%;
@@ -277,27 +198,24 @@
                 right: 10px;
                 gap: 3px;
             }
-            .lang-selector select {
+            .lang-selector button {
                 padding: 6px 10px;
                 font-size: 0.8rem;
             }
             .header-image {
-                height: 400px;
+                height: 180px;
             }
         }
 
         @media (max-width: 480px) {
-            body {
-                padding-top: 440px; /* Further adjust for smaller screens */
+            nav a {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                border-bottom: 1px solid #002c5f;
             }
-            header {
-                padding: 0.8rem 0;
-            }
-            .hamburger-menu {
-                top: 18px;
-            }
-            nav.open {
-                max-height: 250px; /* Adjust for smaller screens */
+            nav a:last-child {
+                border-bottom: none;
             }
             .container {
                 width: 100%;
@@ -321,38 +239,31 @@
                 font-size: 1.2rem;
             }
             .lang-selector {
-                position: static;
+                position: static; /* Đặt lại vị trí trên mobile */
                 justify-content: center;
                 margin-bottom: 10px;
             }
             .header-image {
-                height: 400px;
+                height: 150px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <!-- Removed h1 id="header-title" -->
+        <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='NMP_0156.jpg'" alt="SMC Phu My Facility" class="header-image">
+        <h1 id="header-title">Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ</h1>
         <p id="header-subtitle"></p>
-        <img src="img/NMP_0156.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1200x400/007bff/ffffff?text=SMC+Phu+My+Facility'" alt="SMC Phu My Facility" class="header-image">
         <div class="lang-selector">
-            <select id="language-select">
-                <option value="vi">VI</option>
-                <option value="en">EN</option>
-                <option value="zh">ZH</option>
-                <option value="ko">KO</option>
-                <option value="ja">JA</option>
-            </select>
-        </div>
-        <div class="hamburger-menu" id="hamburger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <button onclick="setLanguage('vi')" class="active">VI</button>
+            <button onclick="setLanguage('en')">EN</button>
+            <button onclick="setLanguage('zh')">ZH</button>
+            <button onclick="setLanguage('ko')">KO</button>
+            <button onclick="setLanguage('ja')">JA</button>
         </div>
     </header>
 
-    <nav id="main-nav">
+    <nav>
         <a href="index.html" data-nav-key="home">Trang Chủ</a>
         <a href="about.html" data-nav-key="about">Về Khoa Nguyen</a>
         <a href="precision.html" data-nav-key="precision">SMC Phu My Precision</a>
@@ -365,7 +276,7 @@
             <!-- Vietnamese Content -->
             <div class="lang-content" data-lang="vi">
                 <h2>Chào mừng bạn đến với trang cá nhân của tôi!</h2>
-                <p>Tôi là Khoa Nguyen, Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phú Mỹ. Với nhiều năm kinh nghiệm trong ngành thép, từ kinh doanh đến quản lý chuỗi cung ứng, tôi cam kết mang đến những giải pháp tối ưu và giá trị bền vững cho đối tác.</p>
+                <p>Tôi là Khoa Nguyen, Phó Giám Đốc Phát Triển Kinh Doanh tại SMC Phu My Precision và SMC Phu My Coil Center. Với nhiều năm kinh nghiệm trong ngành thép, từ kinh doanh đến quản lý chuỗi cung ứng, tôi cam kết mang đến những giải pháp tối ưu và giá trị bền vững cho đối tác.</p>
 
                 <h3>Chuyên môn của tôi</h3>
                 <p>Tôi chuyên sâu về kinh doanh thép (từ thép đen đến thép màu), cùng với kiến thức chuyên sâu về chuỗi cung ứng thép. Tôi tự hào là cầu nối giữa khách hàng và các giải pháp cơ khí chính xác, cũng như nguồn cung thép chất lượng cao từ SMC Group.</p>
@@ -374,7 +285,7 @@
                 <p>Cụm nhà máy SMC Phú Mỹ, với tổng diện tích 9.7 hecta, là một tổ hợp công nghiệp hiện đại và chiến lược của SMC Group tại Bà Rịa-Vũng Tàu. Nơi đây tập trung các công ty thành viên quan trọng như SMC Phu My Precision và SMC Phu My Coil Center, chuyên sản xuất và gia công thép với công nghệ tiên tiến. Vị trí đắc địa gần cảng Cái Mép - Thị Vải giúp tối ưu hóa chuỗi cung ứng, đảm bảo khả năng đáp ứng nhanh chóng và hiệu quả các nhu cầu của thị trường trong nước và quốc tế.</p>
 
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/Ng3jCgY84OY?si=xP7Fw246597FcRt5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/Ng3jCgY84OY?si=xP7Fw246597FcRt5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-inmedia; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
                 <h3>SMC Phu My Precision</h3>
@@ -389,7 +300,7 @@
             <!-- English Content -->
             <div class="lang-content" data-lang="en" style="display:none;">
                 <h2>Welcome to my personal page!</h2>
-                <p>I am Khoa Nguyen, Deputy Business Development Director at SMC Phu My. With many years of experience in the steel industry, from sales to supply chain management, I am committed to providing optimal solutions and sustainable value to partners.</p>
+                <p>I am Khoa Nguyen, Deputy Business Development Director at SMC Phu My Precision and SMC Phu My Coil Center. With many years of experience in the steel industry, from sales to supply chain management, I am committed to providing optimal solutions and sustainable value to partners.</p>
 
                 <h3>My Expertise</h3>
                 <p>I specialize in steel sales (from ferrous to non-ferrous steel), along with in-depth knowledge of the steel supply chain. I am proud to be the bridge between customers and precision mechanical solutions, as well as high-quality steel supply from SMC Group.</p>
@@ -413,7 +324,7 @@
             <!-- Chinese Content -->
             <div class="lang-content" data-lang="zh" style="display:none;">
                 <h2>欢迎来到我的个人主页！</h2>
-                <p>我是阮科，SMC富美业务发展副总裁。凭借在钢铁行业多年的经验，从销售到供应链管理，我致力于为合作伙伴提供最佳解决方案和可持续价值。</p>
+                <p>我是阮科，SMC富美精密和SMC富美钢卷中心的业务发展副总裁。凭借在钢铁行业多年的经验，从销售到供应链管理，我致力于为合作伙伴提供最佳解决方案和可持续价值。</p>
 
                 <h3>我的专长</h3>
                 <p>我专注于钢铁销售（从黑色金属到有色金属），并深入了解钢铁供应链。我很荣幸能成为客户与精密机械解决方案以及SMC集团优质钢材供应之间的桥梁。</p>
@@ -437,7 +348,7 @@
             <!-- Korean Content -->
             <div class="lang-content" data-lang="ko" style="display:none;">
                 <h2>제 개인 페이지에 오신 것을 환영합니다!</h2>
-                <p>저는 SMC 푸미 사업 개발 부사장인 응우옌 코아입니다. 철강 산업에서 영업부터 공급망 관리에 이르기까지 다년간의 경험을 바탕으로, 저는 파트너에게 최적의 솔루션과 지속 가능한 가치를 제공하기 위해 최선을 다하고 있습니다.</p>
+                <p>저는 SMC 푸미 정밀 및 SMC 푸미 코일 센터의 사업 개발 부사장인 응우옌 코아입니다. 철강 산업에서 영업부터 공급망 관리에 이르기까지 다년간의 경험을 바탕으로, 저는 파트너에게 최적의 솔루션과 지속 가능한 가치를 제공하기 위해 최선을 다하고 있습니다.</p>
 
                 <h3>저의 전문 분야</h3>
                 <p>저는 철강 판매(철금속부터 비철금속까지)를 전문으로 하며, 철강 공급망에 대한 깊이 있는 지식을 보유하고 있습니다. 저는 고객과 정밀 기계 솔루션, 그리고 SMC 그룹의 고품질 철강 공급 사이의 다리 역할을 하는 것을 자랑스럽게 생각합니다.</p>
@@ -461,7 +372,7 @@
             <!-- Japanese Content -->
             <div class="lang-content" data-lang="ja" style="display:none;">
                 <h2>私の個人ページへようこそ！</h2>
-                <p>私はSMCフーミー事業開発担当副社長、グエン・コアです。鉄鋼業界における営業からサプライチェーン管理までの長年の経験を活かし、パートナーの皆様に最適なソリューションと持続可能な価値を提供することをお約束します。</p>
+                <p>私はSMCフーミープレシジョンおよびSMCフーミーコイルセンターの事業開発担当副社長、グエン・コアです。鉄鋼業界における営業からサプライチェーン管理までの長年の経験を活かし、パートナーの皆様に最適なソリューションと持続可能な価値を提供することをお約束します。</p>
 
                 <h3>私の専門分野</h3>
                 <p>私は鉄鋼販売（鉄鋼から非鉄鋼まで）を専門とし、鉄鋼サプライチェーンに関する深い知識を持っています。お客様と精密機械ソリューション、そしてSMCグループからの高品質な鋼材供給との間の架け橋となることを誇りに思っています。</p>
@@ -470,7 +381,7 @@
                 <p>総面積9.7ヘクタールのSMCフーミー工業団地は、バリア・ブンタウ省にあるSMCグループの近代的で戦略的な産業拠点です。ここにはSMCフーミープレシジョンやSMCフーミーコイルセンターなどの主要なグループ会社が入居し、先進技術を用いた鋼材の生産と加工を専門としています。カイメップ-ティバイ港に近いという好立地は、サプライチェーンを最適化し、国内外の市場ニーズに迅速かつ効率的に対応できる能力を保証します。</p>
 
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/Ng3jCgY84OY?si=xP7Fw246597FcRt5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-in; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/Ng3jCgY84OY?si=xP7Fw246597FcRt5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
                 <h3>SMCフーミープレシジョン</h3>
@@ -556,13 +467,20 @@
                 }
             });
 
-            // Update the selected option in the dropdown
-            document.getElementById('language-select').value = lang;
+            // Update active button state
+            document.querySelectorAll('.lang-selector button').forEach(button => {
+                if (button.onclick.toString().includes(`setLanguage('${lang}')`)) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
 
             // Update page title
             document.getElementById('page-title').textContent = translations[lang].pageTitle;
 
-            // Update header titles and subtitles (headerTitle is removed, so only headerSubtitle remains)
+            // Update header titles and subtitles
+            document.getElementById('header-title').textContent = translations[lang].headerTitle;
             document.getElementById('header-subtitle').textContent = translations[lang].headerSubtitle;
 
 
@@ -575,41 +493,10 @@
             });
         }
 
-        // Intersection Observer for fade-in animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target); // Stop observing once animated
-                }
-            });
-        }, {
-            threshold: 0.1 // Trigger when 10% of the item is visible
-        });
-
-        // Hamburger menu toggle
+        // On page load, set language from localStorage or default to Vietnamese
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferredLang') || 'vi';
             setLanguage(savedLang);
-
-            // Add event listener for the dropdown change
-            document.getElementById('language-select').addEventListener('change', (event) => {
-                setLanguage(event.target.value);
-            });
-
-            // Observe all sections for fade-in animation
-            document.querySelectorAll('section').forEach(section => {
-                observer.observe(section);
-            });
-
-            // Hamburger menu functionality
-            const hamburger = document.getElementById('hamburger-menu');
-            const nav = document.getElementById('main-nav');
-
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('open');
-                nav.classList.toggle('open');
-            });
         });
     </script>
 </body>
